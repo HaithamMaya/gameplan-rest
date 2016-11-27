@@ -1,5 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {"Gameplan\\": "public/lib"}
+    },
     "require": {
-        "slim/slim": "^3.6"
+        "slim/slim": "^3.6",
+        "monolog/monolog": "^1.22"
     }
 }
