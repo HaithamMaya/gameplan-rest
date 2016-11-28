@@ -5,7 +5,7 @@
       <paths name="aws">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$USER_HOME$/PhpStorm/gameplan" web="/" />
           </mappings>
         </serverdata>
       </paths>

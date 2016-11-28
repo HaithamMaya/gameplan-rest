@@ -1,6 +1,6 @@
 {
     "autoload": {
-        "psr-4": {"Gameplan\\": "public/lib"}
+        "psr-4": {"Gameplan\\": "lib/Gameplan"}
     },
     "require": {
         "slim/slim": "^3.6",

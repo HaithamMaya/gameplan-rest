@@ -10,8 +10,6 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 require __DIR__ . "/../vendor/autoload.php";
-require "lib/Gameplan/Users.php";
-require "lib/Gameplan/User.php";
 
 $inifile = "../config.ini";
 
@@ -46,7 +44,7 @@ $container['db'] = function ($c) {
             $db['user'],
             $db['pass']);
     } catch(PDOException $e){
-        die("failed $e");
+        die("ERROR $e");
     }
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,13 +52,12 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
-$app->get('/hello/{id}', function (Request $request, Response $response) {
+$app->get('/user{id}', function (Request $request, Response $response) {
     $id = $request->getAttribute('id');
-    $users = new Gameplan\Users($this->db);
+    $users = new \Gameplan\Users($this->db);
     $user = $users->get($id);
     $name = (is_null($user) ? "World" : $user->getName());
-
-    $response->getBody()->write("Hello, $name");
+    $response->getBody()->write("Hello, $name\n" . $user->getJson());
 
     return $response;
 });

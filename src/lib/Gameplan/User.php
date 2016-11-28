@@ -23,6 +23,16 @@ class User
         $this->role = $row['role'];
     }
 
+    public function getJson(){
+        $data['id'] = $this->id;
+        $data['name'] = $this->name;
+        $data['email'] = $this->email;
+        $data['created'] = $this->created;
+        $data['role'] = $this->role;
+        $json = json_encode($data, JSON_PRETTY_PRINT);
+        return $json;
+    }
+
     /**
      * @return mixed
      */
