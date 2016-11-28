@@ -52,7 +52,7 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
-$app->get('/user{id}', function (Request $request, Response $response) {
+$app->get('/user-{id}', function (Request $request, Response $response) {
     $id = $request->getAttribute('id');
     $users = new \Gameplan\Users($this->db);
     $user = $users->get($id);
