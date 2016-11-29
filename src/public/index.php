@@ -11,12 +11,10 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$inifile = "../config.ini";
-
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
-$ini = parse_ini_file($inifile);
+$ini = parse_ini_file("../dbConfig.ini");
 
 $config['db']['host']   = $ini['host'];
 $config['db']['port']   = $ini['port'];
@@ -56,15 +54,55 @@ $app->get('/user-{id}', function (Request $request, Response $response) {
     $id = $request->getAttribute('id');
     $users = new \Gameplan\Users($this->db);
     $user = $users->get($id);
-    $name = (is_null($user) ? "World" : $user->getName());
-    $response->getBody()->write("Hello, $name\n" . $user->getJson());
+    if(is_null($user)){
+        $response->getBody()->write("Invalid User ID");
+    } else{
+        $this->logger->addInfo($user->getFirst());
+        $response->getBody()->write("Hello, ".$user->getFirst()."\n" . $user->getJson());
+    }
 
     return $response;
 });
 
-$app->get('/', function(Request $request, Response $response) {
+$app->get('/validate-{v}', function(Request $request, Response $response){
+    $validator = $request->getAttribute('v');
+    $validators = new \Gameplan\Validators($this->db);
+});
+
+$app->post('/validate-{}', function(Request $request, Response $response) {
+    $data = $request->getParsedBody();
+    $pass1 = filter_var($data['pass1'], FILTER_SANITIZE_STRING);
+    $pass2 = filter_var($data['pass2'], FILTER_SANITIZE_STRING);
+
+});
+
+/*$app->get('/user/new', function(Request $request, Response $response){
+
+});*/
+
+$app->post('/user/new', function(Request $request, Response $response){
+    $data = $request->getParsedBody();
+    $row = array(
+        'first' => filter_var($data['first'], FILTER_SANITIZE_STRING),
+        'last' => filter_var($data['last'], FILTER_SANITIZE_STRING),
+        'email' => filter_var($data['email'], FILTER_SANITIZE_STRING),
+        'role' => filter_var($data['role'], FILTER_SANITIZE_STRING),
+        'schoolid' => filter_var($data['schoolid'], FILTER_SANITIZE_STRING),
+        'addressid' => filter_var($data['addressid'], FILTER_SANITIZE_STRING));
+
+    $user = new \Gameplan\User($row);
+    $this->logger->addInfo("Adding user: ".$user->getJson());
+    $users = new \Gameplan\Users($this->db);
+    $mailer = new \Gameplan\Email();
+    $ret = $users->add($user, $mailer);
+    $response->getBody()->write($ret);
+});
+
+$app->get('/info', function(Request $request, Response $response) {
     $response->getBody()->write(phpinfo());
     return $response;
 });
+
+
 
 $app->run();

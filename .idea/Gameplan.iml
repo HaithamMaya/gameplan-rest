@@ -8,9 +8,11 @@
       <library name="PHARS">
         <CLASSES>
           <root url="phar://$MODULE_DIR$/src/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/src/phpunit-5.6.7.phar/" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/src/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/src/phpunit-5.6.7.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

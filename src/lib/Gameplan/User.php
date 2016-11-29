@@ -13,22 +13,33 @@ class User
 {
     /**
      * Constructor
-     * @param $row Row from the Users table in the database
+     * @param $row array from the Users table in the database
      */
     public function __construct($row) {
         $this->id = $row['id'];
+        $this->first = $row['first'];
+        $this->last = $row['last'];
+        $this->username = $row['username'];
         $this->email = $row['email'];
-        $this->name = $row['first']." ".$row['last'];
-        $this->created = strtotime($row['created']);
         $this->role = $row['role'];
+        $this->schoolid = $row['schoolid'];
+        $this->addressid = $row['addressid'];
+        $this->created = $row['created'];
+        $this->joined = $row['joined'];
     }
 
     public function getJson(){
         $data['id'] = $this->id;
-        $data['name'] = $this->name;
+        $data['first'] = $this->first;
+        $data['last'] = $this->last;
+        $data['username'] = $this->username;
         $data['email'] = $this->email;
-        $data['created'] = $this->created;
         $data['role'] = $this->role;
+        $data['schoolid'] = $this->schoolid;
+        $data['addressid'] = $this->addressid;
+        $data['created'] = $this->created;
+        $data['joined'] = $this->joined;
+
         $json = json_encode($data, JSON_PRETTY_PRINT);
         return $json;
     }
@@ -68,17 +79,33 @@ class User
     /**
      * @return mixed
      */
-    public function getName()
+    public function getFirst()
     {
-        return $this->name;
+        return $this->first;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $first
      */
-    public function setName($name)
+    public function setFirst($first)
     {
-        $this->name = $name;
+        $this->first = $first;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLast()
+    {
+        return $this->last;
+    }
+
+    /**
+     * @param mixed $last
+     */
+    public function setLast($last)
+    {
+        $this->last = $last;
     }
 
     /**
@@ -113,6 +140,70 @@ class User
         $this->role = $role;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSchoolid()
+    {
+        return $this->schoolid;
+    }
+
+    /**
+     * @param mixed $schoolid
+     */
+    public function setSchoolid($schoolid)
+    {
+        $this->schoolid = $schoolid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddressid()
+    {
+        return $this->addressid;
+    }
+
+    /**
+     * @param mixed $addressid
+     */
+    public function setAddressid($addressid)
+    {
+        $this->addressid = $addressid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJoined()
+    {
+        return $this->joined;
+    }
+
+    /**
+     * @param mixed $joined
+     */
+    public function setJoined($joined)
+    {
+        $this->joined = $joined;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
 
     const ADMIN = "A";
     const STAFF = "S";
@@ -120,8 +211,14 @@ class User
     const SESSION_NAME = 'user';
 
     private $id;		///< The internal ID for the user
+    private $first; 	///< First name
+    private $last;   	///< Last name
     private $email;		///< Email address
-    private $name; 		///< Name as last, first
-    private $created;	///< When user was added
+    private $username;  ///< Username
     private $role;		///< User role
+    private $schoolid;  ///< ID for School
+    private $addressid; ///< ID for Address
+    private $created;	///< When user was created in DB
+    private $joined;	///< When user activated account
+
 }

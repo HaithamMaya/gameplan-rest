@@ -8,7 +8,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>gameplandev</user-name>
-      <resolve-scope>PostgresDB1:public,gameplandev</resolve-scope>
+      <resolve-scope>PostgresDB1:gameplandev,public</resolve-scope>
     </data-source>
   </component>
 </project>

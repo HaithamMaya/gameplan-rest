@@ -14,8 +14,8 @@
     <schema id="4" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-state-number>2467</introspection-state-number>
-      <introspection-timestamp>2016-11-27.11:38:27.351</introspection-timestamp>
+      <introspection-state-number>9048</introspection-state-number>
+      <introspection-timestamp>2016-11-28.23:45:54.124</introspection-timestamp>
     </schema>
     <schema id="5" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -513,8 +513,7 @@
       <data-type>varchar(64)|0</data-type>
     </column>
     <column id="105" parent="28" name="username">
-      <state-number>2208</state-number>
-      <mandatory>1</mandatory>
+      <state-number>9036</state-number>
       <data-type>varchar(100)|0</data-type>
     </column>
     <column id="106" parent="28" name="email">
@@ -584,20 +583,21 @@
       <underlying-index>users_username_key</underlying-index>
     </key>
     <column id="119" parent="29" name="id">
-      <state-number>2209</state-number>
+      <state-number>9048</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
-      <default-expression>nextval(&apos;validator_id_seq&apos;::regclass)</default-expression>
     </column>
     <column id="120" parent="29" name="validator">
-      <state-number>2209</state-number>
+      <state-number>9041</state-number>
       <mandatory>1</mandatory>
       <data-type>char(32)|0</data-type>
+      <default-expression>now()</default-expression>
     </column>
     <column id="121" parent="29" name="date">
-      <state-number>2209</state-number>
+      <state-number>9042</state-number>
       <mandatory>1</mandatory>
       <data-type>timestamp|0</data-type>
+      <default-expression>now()</default-expression>
     </column>
     <index id="122" parent="29" name="validator_id">
       <object-id>16653</object-id>
