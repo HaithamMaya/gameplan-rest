@@ -43,7 +43,7 @@ SQL;
      * @param Email $mailer An Email object to use
      * @return null on success or error message if failure
      */
-    public function add(User $user, Email $mailer) {
+    public function add(User $user) {
         // Ensure we have no duplicate email address
         if($this->exists($user->getEmail())) {
             return "Email address already exists.";
@@ -65,35 +65,14 @@ SQL;
         $validators = new Validators($this->db);
         $validator = $validators->newValidator($id);
 
-        $ini = parse_ini_file("../emailConfig.ini");
-        // Send email with the validator in it
-        $link = $ini['site'] . $validator;
-
-        $from = $ini['email'];
         $name = $user->getFirst() . ' ' . $user->getLast();
+        $to = array($user->getEmail(), $name);
 
-        $subject = "Get Stoked!";
-        $message = <<<MSG
-<html>
-<p>Greetings, $name,</p>
+        $mailer = new Email();
+        $mailer->welcome($name, $validator);
+        $ret = $mailer->send($to);
 
-<p>Welcome to Stoked. In order to complete your registration,
-please create a username and password by visiting the following link:</p>
-
-<p><a href="$link">
-   _____ __        __            __
-  / ___// /_____  / /_____  ____/ /
-  \__ \/ __/ __ \/ //_/ _ \/ __  / 
- ___/ / /_/ /_/ / ,< /  __/ /_/ /  
-/____/\__/\____/_/|_|\___/\__,_/   
-                                   
-</a></p>
-</html>
-MSG;
-        $headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=iso=8859-1\r\nFrom: $from\r\n";
-        $mailer->mail($user->getEmail(), $subject, $message, $headers);
-
-        return "Email sent";
+        return $ret;
     }
 
     /**
@@ -163,7 +142,7 @@ SQL;
 
         $sql = <<<SQL
 UPDATE $this->tableName
-SET password=?, salt=?, joined=?
+SET hash=?, salt=?, joined=?
 where id=?
 SQL;
         $statement = $this->db->prepare($sql);
@@ -187,29 +166,18 @@ SQL;
         return $str;
     }
 
-    public function recover($id, $name, $email, Email $mailer){
+    public function recover(User $user){
         // Create a validator and add to the validator table
-        $validators = new Validators($this->site);
-        $validator = $validators->newValidator($id);
+        $validators = new Validators($this->db);
+        $validator = $validators->newValidator($user->getId());
 
-        // Send email with the validator in it
-        $link = "http://webdev.cse.msu.edu"  . $this->site->getRoot() .
-            '/password-validate.php?v=' . $validator;
+        $name = $user->getFirst() . ' ' . $user->getLast();
+        $to = array($user->getEmail(), $name);
 
-        $from = $this->site->getEmail();
-        $name = $email;
+        $mailer = new Email();
+        $mailer->recover($name, $validator);
+        $ret = $mailer->send($to);
 
-        $subject = "Recover your password";
-        $message = <<<MSG
-<html>
-<p>Greetings, $name</p>
-
-<p>Recover your password by visiting the following link:</p>
-
-<p><a href="$link">$link</a></p>
-</html>
-MSG;
-        $headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=iso=8859-1\r\nFrom: $from\r\n";
-        $mailer->mail($email, $subject, $message, $headers);
+        return $ret;
     }
 }

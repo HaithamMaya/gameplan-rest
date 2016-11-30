@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f9dba6b3-756a-4ab1-88ac-9947cde42397" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/phpunit-5.6.7.phar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/addUser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dbConfig.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/emailConfig.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Email.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Validators.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tests/UserTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Gameplan.iml" afterPath="$PROJECT_DIR$/.idea/Gameplan.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/a237fe64-a41d-4a44-ad2f-07fc52b44204.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/a237fe64-a41d-4a44-ad2f-07fc52b44204.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.gitignore" afterPath="$PROJECT_DIR$/src/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/Gameplan/User.php" afterPath="$PROJECT_DIR$/src/lib/Gameplan/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addUser.js" afterPath="$PROJECT_DIR$/addUser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/composer.json" afterPath="$PROJECT_DIR$/src/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/emailConfig.ini" afterPath="$PROJECT_DIR$/src/emailConfig.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/Gameplan/Email.php" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Email.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/Gameplan/Users.php" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib/Gameplan/Validators.php" afterPath="$PROJECT_DIR$/src/lib/Gameplan/Validators.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/public/index.php" afterPath="$PROJECT_DIR$/src/public/index.php" />
     </list>
     <ignored path="Rest.iws" />
@@ -62,10 +57,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="validator" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
     <PATH>
       <PATH_ELEMENT>
@@ -80,6 +71,10 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$GroupNode" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="users" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -88,11 +83,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
               <folding>
                 <element signature="e#7#89#0#PHP" expanded="true" />
                 <element signature="e#90#146#0#PHP" expanded="true" />
@@ -104,38 +99,18 @@
       <file leaf-file-name="Email.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Email.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state relative-caret-position="158">
+              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostgresDB1.public.validator" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/13c58644/a237fe64-a41d-4a44-ad2f-07fc52b44204/PostgresDB1.public.validator">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostgresDB1.public.users" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/13c58644/a237fe64-a41d-4a44-ad2f-07fc52b44204/PostgresDB1.public.users">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -144,27 +119,27 @@
       <file leaf-file-name="Validators.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Validators.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+            <state relative-caret-position="578">
+              <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
               <folding>
-                <marker date="1480395950000" expanded="true" signature="603:632" ph="INSERT INTO ${$this-&gt;tableName}... " />
-                <marker date="1480395950000" expanded="true" signature="603:654" ph="INSERT INTO ${$this-&gt;tableName}... " />
-                <marker date="1480395950000" expanded="true" signature="1753:2057" ph="..." />
-                <marker date="1480395950000" expanded="true" signature="1754:1807" ph="SELECT useri... ${$this-&gt;tableName}" />
-                <marker date="1480395950000" expanded="true" signature="2091:2692" ph="..." />
-                <marker date="1480395950000" expanded="true" signature="2092:2135" ph="delete from " />
-                <marker date="1480395950000" expanded="true" signature="2387:2692" ph="..." />
-                <marker date="1480395950000" expanded="true" signature="2388:2441" ph="SELECT useri... ${$this-&gt;tableName}" />
+                <marker date="1480473741000" expanded="true" signature="603:632" ph="INSERT INTO ${$this-&gt;tableName}... " />
+                <marker date="1480473741000" expanded="true" signature="603:654" ph="INSERT INTO ${$this-&gt;tableName}... " />
+                <marker date="1480473741000" expanded="true" signature="1753:2056" ph="..." />
+                <marker date="1480473741000" expanded="true" signature="1754:1807" ph="SELECT useri... ${$this-&gt;tableName}" />
+                <marker date="1480473741000" expanded="true" signature="2093:2689" ph="..." />
+                <marker date="1480473741000" expanded="true" signature="2094:2137" ph="delete from " />
+                <marker date="1480473741000" expanded="true" signature="2389:2689" ph="..." />
+                <marker date="1480473741000" expanded="true" signature="2390:2439" ph="SELECT useri... ${$this-&gt;tableName}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addUser.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="addUser.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/addUser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+            <state relative-caret-position="30">
+              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -185,25 +160,31 @@
       <file leaf-file-name="Users.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="93" column="71" selection-start-line="67" selection-start-column="8" selection-end-line="93" selection-end-column="71" />
+            <state relative-caret-position="1598">
+              <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding>
-                <marker date="1480396582000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
-                <marker date="1480396582000" expanded="true" signature="1248:1942" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="1249:1261" ph="INSERT INTO ${$this-&gt;tableName}... " />
-                <marker date="1480396582000" expanded="true" signature="1249:1277" ph="INSERT INTO ${$this-&gt;tableName}... " />
-                <marker date="1480396582000" expanded="true" signature="1249:1357" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
-                <marker date="1480396582000" expanded="true" signature="2123:2539" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="2153:2285" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="2290:2531" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="2306:2527" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="2982:3868" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="2983:3027" ph="SELECT * fro... ${$this-&gt;tableName}" />
-                <marker date="1480396582000" expanded="true" signature="3509:3868" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="3510:3554" ph="SELECT * fro... ${$this-&gt;tableName}" />
-                <marker date="1480396582000" expanded="true" signature="4482:4932" ph="..." />
-                <marker date="1480396582000" expanded="true" signature="4483:4550" ph="UPDATE ${$th... " />
+                <marker date="1480473218000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
+                <marker date="1480473218000" expanded="true" signature="1233:1806" ph="..." />
+                <marker date="1480473218000" expanded="true" signature="1234:1246" ph="INSERT INTO ${$this-&gt;tableName}... " />
+                <marker date="1480473218000" expanded="true" signature="1234:1262" ph="INSERT INTO ${$this-&gt;tableName}... " />
+                <marker date="1480473218000" expanded="true" signature="1234:1342" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
+                <marker date="1480473218000" expanded="true" signature="2276:3162" ph="..." />
+                <marker date="1480473218000" expanded="true" signature="2277:2321" ph="SELECT * fro... ${$this-&gt;tableName}" />
+                <marker date="1480473218000" expanded="true" signature="2803:3162" ph="..." />
+                <marker date="1480473218000" expanded="true" signature="2804:2848" ph="SELECT * fro... ${$this-&gt;tableName}" />
+                <marker date="1480473218000" expanded="true" signature="3776:4222" ph="..." />
+                <marker date="1480473218000" expanded="true" signature="3777:3840" ph="UPDATE ${$th... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -233,19 +214,19 @@
         <option value="$PROJECT_DIR$/../rest/src/public/lib/Gameplan/User.php" />
         <option value="$PROJECT_DIR$/../rest/src/composer.json" />
         <option value="$PROJECT_DIR$/../rest/src/public/index.php" />
-        <option value="$PROJECT_DIR$/src/composer.json" />
         <option value="$PROJECT_DIR$/tests/UserTest.php" />
         <option value="$PROJECT_DIR$/src/tests/UserTest.php" />
-        <option value="$PROJECT_DIR$/src/lib/Gameplan/Table.php" />
         <option value="$PROJECT_DIR$/src/.gitignore" />
-        <option value="$PROJECT_DIR$/src/emailConfig.ini" />
-        <option value="$PROJECT_DIR$/src/lib/Gameplan/Email.php" />
         <option value="$PROJECT_DIR$/src/lib/Gameplan/User.php" />
+        <option value="$PROJECT_DIR$/src/composer.json" />
+        <option value="$PROJECT_DIR$/src/emailConfig.ini" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a237fe64-a41d-4a44-ad2f-07fc52b44204/console.sql" />
-        <option value="$PROJECT_DIR$/src/lib/Gameplan/Validators.php" />
+        <option value="$PROJECT_DIR$/src/lib/Gameplan/Table.php" />
         <option value="$PROJECT_DIR$/src/lib/Gameplan/Users.php" />
-        <option value="$PROJECT_DIR$/addUser.js" />
         <option value="$PROJECT_DIR$/src/public/index.php" />
+        <option value="$PROJECT_DIR$/src/lib/Gameplan/Validators.php" />
+        <option value="$PROJECT_DIR$/src/lib/Gameplan/Email.php" />
+        <option value="$PROJECT_DIR$/addUser.js" />
       </list>
     </option>
   </component>
@@ -441,7 +422,7 @@
       <updated>1480215594179</updated>
       <workItem from="1480215595700" duration="1770000" />
       <workItem from="1480220588002" duration="20190000" />
-      <workItem from="1480375330429" duration="20739000" />
+      <workItem from="1480375330429" duration="31738000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up Composer and Slim">
       <created>1480221253789</created>
@@ -471,11 +452,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480375375234</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="POST /user/new with json user object adds user to db, sends email with validator link">
+      <created>1480398860226</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1480398860226</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42699000" />
+    <option name="totallyTimeSpent" value="53698000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="872" extended-state="6" />
@@ -488,9 +476,11 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19098713" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16881259" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19957082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -499,7 +489,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -518,7 +507,8 @@
     <MESSAGE value="Setting up Composer and Slim" />
     <MESSAGE value="/hello/{id} returns Hello, User[name] if id found in db." />
     <MESSAGE value="/user-{id} returns Hello, User[name] if id found in db" />
-    <option name="LAST_COMMIT_MESSAGE" value="/user-{id} returns Hello, User[name] if id found in db" />
+    <MESSAGE value="POST /user/new with json user object adds user to db, sends email with validator link" />
+    <option name="LAST_COMMIT_MESSAGE" value="POST /user/new with json user object adds user to db, sends email with validator link" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -549,21 +539,17 @@
         <state relative-caret-position="30">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <marker date="1480396582000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="1248:1942" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="1249:1261" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480396582000" expanded="true" signature="1249:1277" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480396582000" expanded="true" signature="1249:1357" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
-            <marker date="1480396582000" expanded="true" signature="2123:2539" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2153:2285" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2290:2531" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2306:2527" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2982:3868" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2983:3027" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="3509:3868" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="3510:3554" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="4482:4932" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="4483:4550" ph="UPDATE ${$th... " />
+            <marker date="1480473218000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="1233:1806" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="1234:1246" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473218000" expanded="true" signature="1234:1262" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473218000" expanded="true" signature="1234:1342" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
+            <marker date="1480473218000" expanded="true" signature="2276:3162" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="2277:2321" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="2803:3162" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="2804:2848" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="3776:4222" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="3777:3840" ph="UPDATE ${$th... " />
           </folding>
         </state>
       </provider>
@@ -588,6 +574,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -609,6 +596,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -624,14 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -652,14 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -668,74 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a237fe64-a41d-4a44-ad2f-07fc52b44204/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/emailConfig.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbConfig.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Validators.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-          <folding>
-            <marker date="1480395950000" expanded="true" signature="603:632" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480395950000" expanded="true" signature="603:654" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480395950000" expanded="true" signature="1753:2057" ph="..." />
-            <marker date="1480395950000" expanded="true" signature="1754:1807" ph="SELECT useri... ${$this-&gt;tableName}" />
-            <marker date="1480395950000" expanded="true" signature="2091:2692" ph="..." />
-            <marker date="1480395950000" expanded="true" signature="2092:2135" ph="delete from " />
-            <marker date="1480395950000" expanded="true" signature="2387:2692" ph="..." />
-            <marker date="1480395950000" expanded="true" signature="2388:2441" ph="SELECT useri... ${$this-&gt;tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/13c58644/a237fe64-a41d-4a44-ad2f-07fc52b44204/PostgresDB1.public.users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -753,45 +661,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a237fe64-a41d-4a44-ad2f-07fc52b44204/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="90" selection-start-line="0" selection-start-column="90" selection-end-line="0" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/emailConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/13c58644/a237fe64-a41d-4a44-ad2f-07fc52b44204/PostgresDB1.public.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="93" column="71" selection-start-line="67" selection-start-column="8" selection-end-line="93" selection-end-column="71" />
+        <state relative-caret-position="1598">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding>
-            <marker date="1480396582000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="1248:1942" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="1249:1261" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480396582000" expanded="true" signature="1249:1277" ph="INSERT INTO ${$this-&gt;tableName}... " />
-            <marker date="1480396582000" expanded="true" signature="1249:1357" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
-            <marker date="1480396582000" expanded="true" signature="2123:2539" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2153:2285" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2290:2531" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2306:2527" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2982:3868" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="2983:3027" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="3509:3868" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="3510:3554" ph="SELECT * fro... ${$this-&gt;tableName}" />
-            <marker date="1480396582000" expanded="true" signature="4482:4932" ph="..." />
-            <marker date="1480396582000" expanded="true" signature="4483:4550" ph="UPDATE ${$th... " />
+            <marker date="1480473218000" expanded="true" signature="491:532" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="1233:1806" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="1234:1246" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473218000" expanded="true" signature="1234:1262" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473218000" expanded="true" signature="1234:1342" ph="INSERT INTO ${$this-&gt;tableNameINSERT}... " />
+            <marker date="1480473218000" expanded="true" signature="2276:3162" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="2277:2321" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="2803:3162" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="2804:2848" ph="SELECT * fro... ${$this-&gt;tableName}" />
+            <marker date="1480473218000" expanded="true" signature="3776:4222" ph="..." />
+            <marker date="1480473218000" expanded="true" signature="3777:3840" ph="UPDATE ${$th... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding>
+            <element signature="e#7#89#0#PHP" expanded="true" />
+            <element signature="e#90#146#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Validators.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding>
+            <marker date="1480473741000" expanded="true" signature="603:632" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473741000" expanded="true" signature="603:654" ph="INSERT INTO ${$this-&gt;tableName}... " />
+            <marker date="1480473741000" expanded="true" signature="1753:2056" ph="..." />
+            <marker date="1480473741000" expanded="true" signature="1754:1807" ph="SELECT useri... ${$this-&gt;tableName}" />
+            <marker date="1480473741000" expanded="true" signature="2093:2689" ph="..." />
+            <marker date="1480473741000" expanded="true" signature="2094:2137" ph="delete from " />
+            <marker date="1480473741000" expanded="true" signature="2389:2689" ph="..." />
+            <marker date="1480473741000" expanded="true" signature="2390:2439" ph="SELECT useri... ${$this-&gt;tableName}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/Gameplan/Email.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="158">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/public/index.php">
+    <entry file="file://$PROJECT_DIR$/addUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="30">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
           <folding>
-            <element signature="e#7#89#0#PHP" expanded="true" />
-            <element signature="e#90#146#0#PHP" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>

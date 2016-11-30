@@ -77,8 +77,8 @@ SQL;
             return null;
         }
 
-        $id = $statement->fetch(\PDO::FETCH_ASSOC);
-        $id = $id['userid'];
+        $row = $statement->fetch(\PDO::FETCH_ASSOC);
+        $id = $row['userid'];
 
         $sql = <<<SQL
 delete from $this->tableName
@@ -97,7 +97,7 @@ SQL;
 
     public function get($validator) {
         $sql = <<<SQL
-SELECT userid FROM $this->tableName WHERE validator=?
+SELECT id FROM $this->tableName WHERE validator=?
 SQL;
         $statement = $this->db->prepare($sql);
 
@@ -106,8 +106,8 @@ SQL;
             return false;
         }
 
-        $id = $statement->fetch(\PDO::FETCH_ASSOC);
-        $id = $id['userid'];
+        $row = $statement->fetch(\PDO::FETCH_ASSOC);
+        $id = $row['id'];
         return $id;
     }
 

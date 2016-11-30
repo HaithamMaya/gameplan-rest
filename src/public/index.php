@@ -67,18 +67,18 @@ $app->get('/user-{id}', function (Request $request, Response $response) {
 $app->get('/validate-{v}', function(Request $request, Response $response){
     $validator = $request->getAttribute('v');
     $validators = new \Gameplan\Validators($this->db);
+    $id = $validators->get($validator);
+    $users = new \Gameplan\Users($this->db);
+    $user = $users->get($id);
+    $response->getBody()->write("Hello, ".$user->getFirst()."\n" . $user->getJson());
 });
 
-$app->post('/validate-{}', function(Request $request, Response $response) {
+$app->post('/validate-{v}', function(Request $request, Response $response) {
     $data = $request->getParsedBody();
     $pass1 = filter_var($data['pass1'], FILTER_SANITIZE_STRING);
     $pass2 = filter_var($data['pass2'], FILTER_SANITIZE_STRING);
 
 });
-
-/*$app->get('/user/new', function(Request $request, Response $response){
-
-});*/
 
 $app->post('/user/new', function(Request $request, Response $response){
     $data = $request->getParsedBody();
@@ -93,8 +93,7 @@ $app->post('/user/new', function(Request $request, Response $response){
     $user = new \Gameplan\User($row);
     $this->logger->addInfo("Adding user: ".$user->getJson());
     $users = new \Gameplan\Users($this->db);
-    $mailer = new \Gameplan\Email();
-    $ret = $users->add($user, $mailer);
+    $ret = $users->add($user);
     $response->getBody()->write($ret);
 });
 
@@ -103,6 +102,25 @@ $app->get('/info', function(Request $request, Response $response) {
     return $response;
 });
 
+$app->get('/email-{email}', function(Request $request, Response $response) {
+    $email = $request->getAttribute('email');
+    $mailer = new \Gameplan\Email();
+    $link = 'http://ec2-54-160-178-89.compute-1.amazonaws.com/';
+    $to = array($email, '');
+    $message = <<<MSG
+<html>
+<p>Greetings, $email,</p>
 
+<p>Welcome to Stoked. In order to complete your registration,
+please create a username and password by visiting the following link:</p>
+
+<p><a href="$link">Stoked Home</a></p>
+</html>
+MSG;
+
+    $subject = 'Welcome to Stoked!';
+    //$ret = $mailer->send($to, $subject, $message);
+    $response->getBody()->write($message);
+});
 
 $app->run();

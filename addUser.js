@@ -2,6 +2,7 @@
  * Created by cashc on 11/28/16.
  */
 var request = require('request');
+//var fs = require('fs');
 
 function user(first, last, email, role, schoolid, addressid){
     this.first = first;
@@ -12,7 +13,7 @@ function user(first, last, email, role, schoolid, addressid){
     this.addressid = addressid;
 }
 
-var john = new user("John", "Smith", "cs.cmptn@gmail.com", "S", 1, 1);
+var john = new user("John", "Smith", "csc.mptn@gmail.com", "S", 1, 1);
 var url = "http://ec2-54-160-178-89.compute-1.amazonaws.com/user/new";
 var j = JSON.stringify(john);
 console.log(j);
