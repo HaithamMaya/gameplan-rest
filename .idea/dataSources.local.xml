@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="nva-gameplandb" uuid="a237fe64-a41d-4a44-ad2f-07fc52b44204">
+    <data-source name="postgresDB1" uuid="765a7582-2c3c-4608-ac66-032e375880ca">
       <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>gameplandev</user-name>
-      <resolve-scope>PostgresDB1:gameplandev,public</resolve-scope>
+      <resolve-scope>postgres:gameplandev,public</resolve-scope>
     </data-source>
   </component>
 </project>
