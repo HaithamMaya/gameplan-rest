@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2016-12-03.13:08:47.219</IntrospectionTimestamp>
-      <IntrospectionStateNumber>9048</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2016-12-03.18:58:36.252</IntrospectionTimestamp>
+      <IntrospectionStateNumber>10432</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -552,9 +552,9 @@
     </column>
     <column id="105" parent="27" name="email">
       <Position>5</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>varchar(120)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2208</StateNumber>
+      <StateNumber>10432</StateNumber>
     </column>
     <column id="106" parent="27" name="role">
       <Position>6</Position>
