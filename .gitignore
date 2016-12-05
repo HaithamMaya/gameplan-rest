@@ -1,2 +1,3 @@
 .DS_Store
-config.py
+config_app.py
+config_security.py
