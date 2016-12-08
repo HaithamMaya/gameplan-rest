@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2016-12-08.12:14:00.653</IntrospectionTimestamp>
-      <IntrospectionStateNumber>11857</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2016-12-08.18:08:57.196</IntrospectionTimestamp>
+      <IntrospectionStateNumber>11959</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -130,7 +130,7 @@
     </table>
     <table id="31" parent="3" name="validator">
       <ObjectId>16636</ObjectId>
-      <StateNumber>2209</StateNumber>
+      <StateNumber>11954</StateNumber>
     </table>
     <column id="32" parent="20" name="id">
       <Position>1</Position>
@@ -305,15 +305,15 @@
       <StateNumber>11083</StateNumber>
       <DefaultExpression>true</DefaultExpression>
     </column>
-    <column id="62" parent="23" name="_redirect_uris">
+    <column id="62" parent="23" name="redirect_uris">
       <Position>6</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11083</StateNumber>
+      <StateNumber>11869</StateNumber>
     </column>
-    <column id="63" parent="23" name="_default_scopes">
+    <column id="63" parent="23" name="default_scopes">
       <Position>7</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11083</StateNumber>
+      <StateNumber>11870</StateNumber>
     </column>
     <index id="64" parent="23" name="client_clientid_uindex">
       <ObjectId>16669</ObjectId>
@@ -738,49 +738,43 @@
       <ColNames>username</ColNames>
       <UnderlyingIndexName>users_username_key</UnderlyingIndexName>
     </key>
-    <column id="140" parent="31" name="id">
+    <column id="140" parent="31" name="userid">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>9048</StateNumber>
+      <StateNumber>11959</StateNumber>
     </column>
     <column id="141" parent="31" name="validator">
       <Position>2</Position>
-      <DataType>char(32)|0</DataType>
+      <DataType>char(64)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>9041</StateNumber>
-      <DefaultExpression>now()</DefaultExpression>
+      <StateNumber>11955</StateNumber>
     </column>
-    <column id="142" parent="31" name="date">
+    <column id="142" parent="31" name="created">
       <Position>3</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>9042</StateNumber>
+      <StateNumber>11932</StateNumber>
       <DefaultExpression>now()</DefaultExpression>
     </column>
-    <index id="143" parent="31" name="validator_id">
-      <ObjectId>16653</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="144" parent="31" name="validator_pkey">
-      <ObjectId>16640</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="145" parent="31" name="validator_validator_key">
-      <ObjectId>16642</ObjectId>
+    <index id="143" parent="31" name="validator_validator_key">
+      <ObjectId>16700</ObjectId>
       <ColNames>validator</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="146" parent="31" name="validator_pkey">
-      <ObjectId>16641</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>validator_pkey</UnderlyingIndexName>
+    <index id="144" parent="31" name="validator_validator_pk">
+      <ObjectId>16708</ObjectId>
+      <ColNames>validator</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="145" parent="31" name="validator_validator_pk">
+      <ObjectId>16709</ObjectId>
+      <ColNames>validator</ColNames>
+      <UnderlyingIndexName>validator_validator_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="147" parent="31" name="validator_validator_key">
-      <ObjectId>16643</ObjectId>
+    <key id="146" parent="31" name="validator_validator_key">
+      <ObjectId>16701</ObjectId>
       <ColNames>validator</ColNames>
       <UnderlyingIndexName>validator_validator_key</UnderlyingIndexName>
     </key>

@@ -1,5 +1,5 @@
 # coding: utf-8
-from sqlalchemy import Column, DateTime, Float, Integer, String, text, ForeignKey, Boolean
+from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from flask_restplus import fields, reqparse
 
@@ -55,8 +55,8 @@ class Client(Base):
     name = Column(String(40))
     userid = Column(Integer, nullable=False)
     confidential = Column(Boolean, nullable=False)
-    _redirect_uris = Column(text)
-    _default_scopes = Column(text)
+    redirect_uris = Column(Text)
+    default_scopes = Column(Text)
 
     @property
     def client_type(self):
@@ -66,8 +66,8 @@ class Client(Base):
 
     @property
     def redirect_uris(self):
-        if self._redirect_uris:
-            return self._redirect_uris.split()
+        if self.redirect_uris:
+            return self.redirect_uris.split()
         return []
 
     @property
@@ -76,8 +76,8 @@ class Client(Base):
 
     @property
     def default_scopes(self):
-        if self._default_scopes:
-            return self._default_scopes.split()
+        if self.default_scopes:
+            return self.default_scopes.split()
         return []
 
 
@@ -112,7 +112,18 @@ class Grant(Base):
     code = Column(String(255), nullable=False)
     redirect_uri = Column(String(255))
     expires = Column(DateTime)
-    scopes = Column(text)
+    scopes = Column(Text)
+
+    def delete(self, db):
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
+    @property
+    def scopes(self):
+        if self.scopes:
+            return self.scopes.split()
+        return []
 
 
 class Ratings(Base):
@@ -143,7 +154,18 @@ class Token(Base):
     accesstoken = Column(String(255), unique=True)
     refreshtoken = Column(String(255), unique=True)
     expires = Column(DateTime)
-    scopes = Column(text)
+    scopes = Column(Text)
+
+    def delete(self, db):
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
+    @property
+    def scopes(self):
+        if self.scopes:
+            return self.scopes.split()
+        return []
 
 
 class Users(Base):
@@ -215,7 +237,12 @@ class Users(Base):
 class Validators(Base):
     __tablename__ = 'validator'
 
-    id = Column(Integer, primary_key=True, unique=True)
+    userid = Column(Integer, primary_key=True, unique=True)
     validator = Column(String(32), nullable=False, unique=True, server_default=text("now()"))
-    date = Column(DateTime, nullable=False, server_default=text("now()"))
+    created = Column(DateTime, nullable=False, server_default=text("now()"))
+
+    def __init__(self, userid, validator, date):
+        self.userid = userid
+        self.validator = validator
+        self.created = date
 
