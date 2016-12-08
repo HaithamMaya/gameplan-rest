@@ -21,6 +21,6 @@ sudo apt-get install psycopg2
 ```
 on remote server
 ``` 
-udo apt-get install libapache2-mod-wsgi-py3
+sudo apt-get install libapache2-mod-wsgi-py3
 sudo apt install python3-pip
 ```

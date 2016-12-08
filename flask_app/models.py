@@ -1,11 +1,10 @@
 # coding: utf-8
-from sqlalchemy import Column, DateTime, Float, Integer, String, text
+from sqlalchemy import Column, DateTime, Float, Integer, String, text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
-from flask_restplus import fields
+from flask_restplus import fields, reqparse
 
 Base = declarative_base()
 metadata = Base.metadata
-
 
 class Addresses(Base):
     __tablename__ = 'address'
@@ -48,6 +47,39 @@ class Categories(Base):
     name = Column(String(64), nullable=False)
     type = Column(String(1), nullable=False)
 
+class Client(Base):
+    __tablename__ = 'client'
+
+    id = Column(String(50), primary_key=True, unique=True)
+    secret = Column(String(64), nullable=False, unique=True)
+    name = Column(String(40))
+    userid = Column(Integer, nullable=False)
+    confidential = Column(Boolean, nullable=False)
+    _redirect_uris = Column(text)
+    _default_scopes = Column(text)
+
+    @property
+    def client_type(self):
+        if self.confidential:
+            return 'confidential'
+        return 'public'
+
+    @property
+    def redirect_uris(self):
+        if self._redirect_uris:
+            return self._redirect_uris.split()
+        return []
+
+    @property
+    def default_redirect_uri(self):
+        return self.redirect_uris[0]
+
+    @property
+    def default_scopes(self):
+        if self._default_scopes:
+            return self._default_scopes.split()
+        return []
+
 
 class Connections(Base):
     __tablename__ = 'connection'
@@ -71,6 +103,18 @@ class Gameplans(Base):
     modified = Column(DateTime)
 
 
+class Grant(Base):
+    __tablename__ = 'grant'
+
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    userid = Column(Integer, nullable=False)
+    clientid = Column(String(50), nullable=False)
+    code = Column(String(255), nullable=False)
+    redirect_uri = Column(String(255))
+    expires = Column(DateTime)
+    scopes = Column(text)
+
+
 class Ratings(Base):
     __tablename__ = 'rating'
 
@@ -87,6 +131,19 @@ class Schools(Base):
     name = Column(String(100), nullable=False)
     adminid = Column(Integer, nullable=False)
     addressid = Column(Integer, nullable=False)
+
+
+class Token(Base):
+    __tablename__ = 'token'
+
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
+    clientid = Column(String(50), nullable=False)
+    userid = Column(Integer)
+    token_type = Column(String(40))
+    accesstoken = Column(String(255), unique=True)
+    refreshtoken = Column(String(255), unique=True)
+    expires = Column(DateTime)
+    scopes = Column(text)
 
 
 class Users(Base):
@@ -133,7 +190,7 @@ class Users(Base):
         return userModel
 
     def modelPost(api):
-        newUserModel = api.model('User', {
+        newUserModel = api.model('New User', {
             'first': fields.String,
             'last': fields.String,
             'email': fields.String,
@@ -142,6 +199,17 @@ class Users(Base):
             'addressid': fields.Integer,
         })
         return newUserModel
+
+    @staticmethod
+    def req():
+        userParser = reqparse.RequestParser()
+        userParser.add_argument('first', type=str, help='First name required')
+        userParser.add_argument('last', type=str, help='Last name required')
+        userParser.add_argument('email', type=str, help='Email address required')
+        userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
+        userParser.add_argument('schoolid', type=int, help='School ID required')
+        userParser.add_argument('addressid', type=int, help='Address ID required')
+        return userParser
 
 
 class Validators(Base):
