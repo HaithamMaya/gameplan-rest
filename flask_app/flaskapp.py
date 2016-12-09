@@ -1,10 +1,10 @@
 from flask_app.models import *
+from flask_app.decorators import *
 #from models import *
 from flask import Flask, render_template
 from flask_restplus import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_oauthlib.provider import OAuth2Provider
-from flask_security import login_required
 from flask_mail import Mail, Message
 from datetime import datetime, timedelta
 import random
@@ -75,30 +75,29 @@ class Validator(Resource):
         user = db.session.query(Users).filter_by(id=validator.userid).first()
         return user
 
-# @app.route('/oauth/authorize')
-# @login_required
-# @oauth.authorize_handler
-# class Authorize():
-#     @api.expect(Users.modelPost(api), validate=True)
-#     def get(self):
-#         print('none')
-#         client_id = kwargs.get('client_id')
-#         client = Client.query.filter_by(client_id=client_id).first()
-#         kwargs['client'] = client
-#         return render_template('oauthorize.html', **kwargs)
-#
-#     def post(self):
-#         confirm = request.form.get('confirm', 'no')
-#         return confirm == 'yes'
-#
-# @app.route('/oauth/token', methods=['POST'])
-# @oauth.token_handler
-# def access_token():
-#     return None
-#
-# @app.route('/oauth/revoke', methods=['POST'])
-# @oauth.revoke_handler
-# def revoke_token(): pass
+@api.route('/oauth/authorize')
+@login_required
+@oauth.authorize_handler
+class Authorize():
+    @api.expect(Users.modelPost(api), validate=True)
+    def get(self):
+        client_id = kwargs.get('client_id')
+        client = Client.query.filter_by(client_id=client_id).first()
+        kwargs['client'] = client
+        return render_template('oauthorize.html', **kwargs)
+
+    def post(self):
+        confirm = request.form.get('confirm', 'no')
+        return confirm == 'yes'
+
+@app.route('/oauth/token', methods=['POST'])
+@oauth.token_handler
+def access_token():
+    return None
+
+@app.route('/oauth/revoke', methods=['POST'])
+@oauth.revoke_handler
+def revoke_token(): pass
 
 
 def randomString(length=32):
@@ -157,25 +156,11 @@ def save_token(token, request, *args, **kwargs):
     expires_in = token.get('expires_in')
     expires = datetime.utcnow() + timedelta(seconds=expires_in)
 
-    tok = Token(
-        access_token=token['access_token'],
-        refresh_token=token['refresh_token'],
-        token_type=token['token_type'],
-        _scopes=token['scope'],
-        expires=expires,
-        client_id=request.client.client_id,
-        user_id=request.user.id,
+    tok = Token(None, request.client.client_id, request.user.id, token['token_type'], token['access_token'], token['refresh_token'], expires,
+                token['scope']
     )
     db.session.add(tok)
     db.session.commit()
-
-    # {             *EXAMPLE*
-    #     'access_token': '6JwgO77PApxsFCU8Quz0pnL9s23016',
-    #     'refresh_token': '7cYSMmBg4T7F4kwoWfUQA99J8yqjp0',
-    #     'token_type': 'Bearer',
-    #     'expires_in': 3600,
-    #     'scope': 'email address'
-    # }
     return tok
 
 @oauth.usergetter

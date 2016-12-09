@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2016-12-08.18:08:57.196</IntrospectionTimestamp>
-      <IntrospectionStateNumber>11959</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2016-12-08.22:05:44.602</IntrospectionTimestamp>
+      <IntrospectionStateNumber>12020</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -130,7 +130,7 @@
     </table>
     <table id="31" parent="3" name="validator">
       <ObjectId>16636</ObjectId>
-      <StateNumber>11954</StateNumber>
+      <StateNumber>12020</StateNumber>
     </table>
     <column id="32" parent="20" name="id">
       <Position>1</Position>
@@ -746,9 +746,9 @@
     </column>
     <column id="141" parent="31" name="validator">
       <Position>2</Position>
-      <DataType>char(64)|0</DataType>
+      <DataType>varchar(64)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>11955</StateNumber>
+      <StateNumber>12020</StateNumber>
     </column>
     <column id="142" parent="31" name="created">
       <Position>3</Position>
@@ -758,23 +758,23 @@
       <DefaultExpression>now()</DefaultExpression>
     </column>
     <index id="143" parent="31" name="validator_validator_key">
-      <ObjectId>16700</ObjectId>
+      <ObjectId>16713</ObjectId>
       <ColNames>validator</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="144" parent="31" name="validator_validator_pk">
-      <ObjectId>16708</ObjectId>
+      <ObjectId>16711</ObjectId>
       <ColNames>validator</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="145" parent="31" name="validator_validator_pk">
-      <ObjectId>16709</ObjectId>
+      <ObjectId>16712</ObjectId>
       <ColNames>validator</ColNames>
       <UnderlyingIndexName>validator_validator_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="146" parent="31" name="validator_validator_key">
-      <ObjectId>16701</ObjectId>
+      <ObjectId>16714</ObjectId>
       <ColNames>validator</ColNames>
       <UnderlyingIndexName>validator_validator_key</UnderlyingIndexName>
     </key>

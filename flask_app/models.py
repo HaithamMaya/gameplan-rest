@@ -143,6 +143,12 @@ class Schools(Base):
     adminid = Column(Integer, nullable=False)
     addressid = Column(Integer, nullable=False)
 
+    def __init__(self, id, name, adminid, addressid):
+        self.id = id
+        self.name = name
+        self.adminid = adminid
+        self.addressid = addressid
+
 
 class Token(Base):
     __tablename__ = 'token'
@@ -155,6 +161,24 @@ class Token(Base):
     refreshtoken = Column(String(255), unique=True)
     expires = Column(DateTime)
     scopes = Column(Text)
+
+    # {             *EXAMPLE*
+    #     'access_token': '6JwgO77PApxsFCU8Quz0pnL9s23016',
+    #     'refresh_token': '7cYSMmBg4T7F4kwoWfUQA99J8yqjp0',
+    #     'token_type': 'Bearer',
+    #     'expires_in': 3600,
+    #     'scope': 'email address'
+    # }
+    def __init__(self, id, clientid, userid, token_type, accessToken, refreshToken, expires, scopes):
+        self.id = id
+        self.clientid = clientid
+        self.userid = userid
+        self.token_type = token_type
+        self.accesstoken = accessToken
+        self.refreshtoken = refreshToken
+        self.expires = expires
+        self.scopes = scopes
+
 
     def delete(self, db):
         db.session.delete(self)
@@ -237,8 +261,8 @@ class Users(Base):
 class Validators(Base):
     __tablename__ = 'validator'
 
-    userid = Column(Integer, primary_key=True, unique=True)
-    validator = Column(String(32), nullable=False, unique=True, server_default=text("now()"))
+    userid = Column(Integer)
+    validator = Column(String(64), primary_key=True, nullable=False, unique=True)
     created = Column(DateTime, nullable=False, server_default=text("now()"))
 
     def __init__(self, userid, validator, date):
