@@ -1,7 +1,9 @@
 # coding: utf-8
+from flask_app import db
 from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from flask_restplus import fields, reqparse
+from flask import jsonify
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -24,7 +26,7 @@ class Auths(Base):
     userid = Column(Integer, nullable=False, unique=True)
     created = Column(DateTime, nullable=False)
     oauthtoken = Column(String(64), nullable=False, unique=True)
-    refreshtoken = Column(String(64), nullable=False, unique=True)
+    refresh_token = Column(String(64), nullable=False, unique=True)
     expiration = Column(DateTime, nullable=False)
 
 
@@ -50,13 +52,22 @@ class Categories(Base):
 class Client(Base):
     __tablename__ = 'client'
 
-    id = Column(String(50), primary_key=True, unique=True)
+    client_id = Column(String(50), primary_key=True, unique=True)
     secret = Column(String(64), nullable=False, unique=True)
     name = Column(String(40))
     userid = Column(Integer, nullable=False)
     confidential = Column(Boolean, nullable=False)
-    redirect_uris = Column(Text)
-    default_scopes = Column(Text)
+    _redirect_uris = Column(Text)
+    _default_scopes = Column(Text)
+
+    def __init__(self, id, secret, name, userid, confidential, redirects, scopes):
+        self.client_id = id
+        self.secret = secret
+        self.name = name
+        self.userid = userid
+        self.confidential = confidential
+        self._redirect_uris = redirects
+        self._default_scopes = scopes
 
     @property
     def client_type(self):
@@ -66,18 +77,18 @@ class Client(Base):
 
     @property
     def redirect_uris(self):
-        if self.redirect_uris:
-            return self.redirect_uris.split()
+        if self._redirect_uris:
+            return self._redirect_uris.split()
         return []
 
     @property
     def default_redirect_uri(self):
-        return self.redirect_uris[0]
+        return self._redirect_uris[0]
 
     @property
     def default_scopes(self):
-        if self.default_scopes:
-            return self.default_scopes.split()
+        if self._default_scopes:
+            return self._default_scopes.split()
         return []
 
 
@@ -107,22 +118,55 @@ class Grant(Base):
     __tablename__ = 'grant'
 
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
-    userid = Column(Integer, nullable=False)
-    clientid = Column(String(50), nullable=False)
+    user = Column(Integer, nullable=False)
+    client_id = Column(String(50), nullable=False)
     code = Column(String(255), nullable=False)
     redirect_uri = Column(String(255))
     expires = Column(DateTime)
-    scopes = Column(Text)
+    _scopes = Column(String)
 
-    def delete(self, db):
+    def __init__(self, id, userid, clientid, code, redirect_uri, expires, scopes):
+        self.id = id
+        self.user = userid
+        self.client_id = clientid
+        self.code = code
+        self.redirect_uri = redirect_uri
+        self.expires = expires
+        self._scopes = scopes
+
+    @property
+    def modelJson(api):
+        newUserModel = api.model('New User', {
+            'first': fields.String,
+            'last': fields.String,
+            'email': fields.String,
+            'role': fields.String,
+            'schoolid': fields.Integer,
+            'addressid': fields.Integer,
+        })
+        return newUserModel
+
+    @staticmethod
+    def req():
+        grantParser = reqparse.RequestParser()
+        grantParser.add_argument('first', type=str, help='First name required')
+        grantParser.add_argument('last', type=str, help='Last name required')
+        grantParser.add_argument('email', type=str, help='Email address required')
+        grantParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
+        grantParser.add_argument('schoolid', type=int, help='School ID required')
+        grantParser.add_argument('addressid', type=int, help='Address ID required')
+        return grantParser
+
+
+    def delete(self):
         db.session.delete(self)
         db.session.commit()
         return self
 
     @property
     def scopes(self):
-        if self.scopes:
-            return self.scopes.split()
+        if self._scopes:
+            return self._scopes.split()
         return []
 
 
@@ -154,38 +198,30 @@ class Token(Base):
     __tablename__ = 'token'
 
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
-    clientid = Column(String(50), nullable=False)
-    userid = Column(Integer)
+    client_id = Column(String(50), nullable=False)
+    user = Column(Integer)
     token_type = Column(String(40))
-    accesstoken = Column(String(255), unique=True)
-    refreshtoken = Column(String(255), unique=True)
+    access_token = Column(String(255), unique=True)
+    refresh_token = Column(String(255), unique=True)
     expires = Column(DateTime)
-    scopes = Column(Text)
+    _scopes = Column(Text)
 
-    # {             *EXAMPLE*
-    #     'access_token': '6JwgO77PApxsFCU8Quz0pnL9s23016',
-    #     'refresh_token': '7cYSMmBg4T7F4kwoWfUQA99J8yqjp0',
-    #     'token_type': 'Bearer',
-    #     'expires_in': 3600,
-    #     'scope': 'email address'
-    # }
     def __init__(self, id, clientid, userid, token_type, accessToken, refreshToken, expires, scopes):
         self.id = id
-        self.clientid = clientid
-        self.userid = userid
+        self.client_id = clientid
+        self.user = userid
         self.token_type = token_type
-        self.accesstoken = accessToken
-        self.refreshtoken = refreshToken
+        self.access_token = accessToken
+        self.refresh_token = refreshToken
         self.expires = expires
-        self.scopes = scopes
+        self._scopes = scopes
 
 
-    def delete(self, db):
-        db.session.delete(self)
-        db.session.commit()
+    def delete(self):
+        #need to implement
         return self
 
-    @property
+    @staticmethod
     def scopes(self):
         if self.scopes:
             return self.scopes.split()
@@ -220,6 +256,21 @@ class Users(Base):
         self.created = created
         self.joined = joined
 
+    def JSON(self):
+        return jsonify({
+            'id': self.id,
+            'first': self.first,
+            'last': self.last,
+            'username': self.username,
+            'email': self.email,
+            'role': self.role,
+            'schoolid': self.schoolid,
+            'addressid': self.addressid,
+            'created': self.created,
+            'joined': self.joined
+        })
+
+    @staticmethod
     def modelJson(api):
         userModel = api.model('User', {
             'id': fields.Integer,
@@ -235,6 +286,7 @@ class Users(Base):
         })
         return userModel
 
+    @staticmethod
     def modelPost(api):
         newUserModel = api.model('New User', {
             'first': fields.String,
@@ -256,6 +308,13 @@ class Users(Base):
         userParser.add_argument('schoolid', type=int, help='School ID required')
         userParser.add_argument('addressid', type=int, help='Address ID required')
         return userParser
+
+    @staticmethod
+    def reqLogin():
+        loginParser = reqparse.RequestParser()
+        loginParser.add_argument('username', type=str, help='username required')
+        loginParser.add_argument('password', type=str, help='password required')
+        return loginParser
 
 
 class Validators(Base):

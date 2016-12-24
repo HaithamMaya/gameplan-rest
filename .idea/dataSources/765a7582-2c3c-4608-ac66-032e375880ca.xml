@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2016-12-08.22:05:44.602</IntrospectionTimestamp>
-      <IntrospectionStateNumber>12020</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2016-12-23.15:58:55.371</IntrospectionTimestamp>
+      <IntrospectionStateNumber>16322</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -286,11 +286,11 @@
       <NotNull>1</NotNull>
       <StateNumber>11083</StateNumber>
     </column>
-    <column id="59" parent="23" name="id">
+    <column id="59" parent="23" name="client_id">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>11856</StateNumber>
+      <StateNumber>16213</StateNumber>
     </column>
     <column id="60" parent="23" name="secret">
       <Position>4</Position>
@@ -305,24 +305,24 @@
       <StateNumber>11083</StateNumber>
       <DefaultExpression>true</DefaultExpression>
     </column>
-    <column id="62" parent="23" name="redirect_uris">
+    <column id="62" parent="23" name="_redirect_uris">
       <Position>6</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11869</StateNumber>
+      <StateNumber>12222</StateNumber>
     </column>
-    <column id="63" parent="23" name="default_scopes">
+    <column id="63" parent="23" name="_default_scopes">
       <Position>7</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11870</StateNumber>
+      <StateNumber>12223</StateNumber>
     </column>
     <index id="64" parent="23" name="client_clientid_uindex">
       <ObjectId>16669</ObjectId>
-      <ColNames>id</ColNames>
+      <ColNames>client_id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="65" parent="23" name="client_pkey">
       <ObjectId>16667</ObjectId>
-      <ColNames>id</ColNames>
+      <ColNames>client_id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="66" parent="23" name="client_clientsecret_uindex">
@@ -332,7 +332,7 @@
     </index>
     <key id="67" parent="23" name="client_pkey">
       <ObjectId>16668</ObjectId>
-      <ColNames>id</ColNames>
+      <ColNames>client_id</ColNames>
       <UnderlyingIndexName>client_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
@@ -445,17 +445,17 @@
       <StateNumber>11845</StateNumber>
       <DefaultExpression>nextval(&apos;grant_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="87" parent="26" name="userid">
+    <column id="87" parent="26" name="user">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>11845</StateNumber>
+      <StateNumber>16235</StateNumber>
     </column>
-    <column id="88" parent="26" name="clientid">
+    <column id="88" parent="26" name="client_id">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>11847</StateNumber>
+      <StateNumber>16231</StateNumber>
     </column>
     <column id="89" parent="26" name="code">
       <Position>4</Position>
@@ -473,10 +473,10 @@
       <DataType>timestamp|0</DataType>
       <StateNumber>11845</StateNumber>
     </column>
-    <column id="92" parent="26" name="scopes">
+    <column id="92" parent="26" name="_scopes">
       <Position>7</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11845</StateNumber>
+      <StateNumber>12224</StateNumber>
     </column>
     <index id="93" parent="26" name="grant_id_uindex">
       <ObjectId>16682</ObjectId>
@@ -581,41 +581,41 @@
       <StateNumber>11849</StateNumber>
       <DefaultExpression>nextval(&apos;token_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="111" parent="29" name="clientid">
+    <column id="111" parent="29" name="client_id">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>11849</StateNumber>
+      <StateNumber>16232</StateNumber>
     </column>
-    <column id="112" parent="29" name="userid">
+    <column id="112" parent="29" name="user">
       <Position>3</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>11849</StateNumber>
+      <StateNumber>16271</StateNumber>
     </column>
     <column id="113" parent="29" name="token_type">
       <Position>4</Position>
       <DataType>varchar(40)|0</DataType>
       <StateNumber>11849</StateNumber>
     </column>
-    <column id="114" parent="29" name="accesstoken">
+    <column id="114" parent="29" name="access_token">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>11849</StateNumber>
+      <StateNumber>16322</StateNumber>
     </column>
-    <column id="115" parent="29" name="refreshtoken">
+    <column id="115" parent="29" name="refresh_token">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>11849</StateNumber>
+      <StateNumber>16321</StateNumber>
     </column>
     <column id="116" parent="29" name="expires">
       <Position>7</Position>
       <DataType>timestamp|0</DataType>
       <StateNumber>11849</StateNumber>
     </column>
-    <column id="117" parent="29" name="scopes">
+    <column id="117" parent="29" name="_scopes">
       <Position>8</Position>
       <DataType>text|0</DataType>
-      <StateNumber>11849</StateNumber>
+      <StateNumber>12225</StateNumber>
     </column>
     <index id="118" parent="29" name="client_id_seq">
       <ObjectId>16698</ObjectId>
@@ -629,12 +629,12 @@
     </index>
     <index id="120" parent="29" name="token_accesstoken_uindex">
       <ObjectId>16696</ObjectId>
-      <ColNames>accesstoken</ColNames>
+      <ColNames>access_token</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="121" parent="29" name="token_refreshtoken_uindex">
       <ObjectId>16697</ObjectId>
-      <ColNames>refreshtoken</ColNames>
+      <ColNames>refresh_token</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="122" parent="29" name="token_pkey">

@@ -6,7 +6,7 @@ http://127.0.0.1:5000/  (local)
 ###References for installed packages  
 https://pythonhosted.org/Flask-Security/  
 http://flask.pocoo.org/docs/0.11/patterns/sqlalchemy/  
-https://flask-restplus.readthedocs.io/en/stable/ 
+https://flask-restplus.readthedocs.io/en/stable/   
 https://flask-oauthlib.readthedocs.io/en/latest/oauth2.html#example-for-oauth-2
 
 
