@@ -104,8 +104,12 @@ def authorize(*args, **kwargs):
 @oauth.token_handler
 def access_token():
     """
-        Authorize client
-        Adds a grant for the current user and client in session
+        Token generator
+        Takes 4 different payloads. A token can be generated from grant_types:
+        Password
+        Client_Credentials
+        Refresh_Token
+        Authorization_Code
         ---
         tags:
           - OAuth
@@ -120,16 +124,26 @@ def access_token():
             required: true
         responses:
           '200':
-            description: Returns Client
+            description: Returns Token
             schema:
-              id: Client
+              id: Token
               properties:
-                client_id:
+                access_token:
                   type: string
-                  description: client id
-                client_secret:
+                  description: access token
+                refresh_token:
                   type: string
-                  description: client secret
+                  description: refresh token
+                scope:
+                  type: string
+                  description: scope (user role)
+                token_type:
+                  type: string
+                  description: only bearer tokens supported
+                  default: Bearer
+                expires_in:
+                  type: integer
+                  description: time in seconds until access token expires
           '401':
             description: Unauthorized
         """
@@ -137,20 +151,7 @@ def access_token():
 
 @app.route('/oauth/revoke', methods=['POST'])
 @oauth.revoke_handler
-def revoke_token():
-    """
-    Revoke token
-    Remove the token and revoke users access
-    ---
-    tags:
-      - OAuth
-    parameters:
-      - name: token
-      in: query
-      type: string
-    responses:
-    """
-    pass
+def revoke_token(): pass
 
 
 @oauth.clientgetter
