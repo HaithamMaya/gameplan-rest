@@ -1,4 +1,3 @@
-# coding: utf-8
 from flask_app import db
 from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base

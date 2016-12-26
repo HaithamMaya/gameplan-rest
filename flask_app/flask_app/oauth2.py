@@ -1,5 +1,5 @@
 from flask_app import app, db, oauth
-from flask_app.models import *
+from flask_app.models import Client, Grant, Token, Users
 from flask import redirect, request, render_template, session, jsonify
 from werkzeug.security import gen_salt
 from datetime import datetime, timedelta
@@ -9,8 +9,29 @@ from hashlib import sha512
 
 SIMPLE_CHARS = string.ascii_letters + string.digits
 
-@app.route('/client')
+@app.route('/client', methods=['GET'])
 def client():
+    """
+    New client
+    Adds a new client for the current user in session, and returns id and secret
+    ---
+    tags:
+      - OAuth
+    responses:
+      '200':
+        description: Returns Client
+        schema:
+          id: Client
+          properties:
+            client_id:
+              type: string
+              description: client id
+            client_secret:
+              type: string
+              description: client secret
+      '401':
+        description: Unauthorized
+    """
     user = current_user()
     if not user:
         return redirect('/')
@@ -35,6 +56,36 @@ def client():
 @app.route('/oauth/authorize', methods=['GET', 'POST'])
 @oauth.authorize_handler
 def authorize(*args, **kwargs):
+    """
+    Authorize client
+    Adds a grant for the current user and client in session
+    ---
+    tags:
+      - OAuth
+    parameters:
+      - name: grant_type
+        in: query
+        type: string
+        required: true
+      - name: client_id
+        in: query
+        type: string
+        required: true
+    responses:
+      '200':
+        description: Returns Client
+        schema:
+          id: Client
+          properties:
+            client_id:
+              type: string
+              description: client id
+            client_secret:
+              type: string
+              description: client secret
+      '401':
+        description: Unauthorized
+    """
     user = current_user()
     if not user:
         return redirect('/')
@@ -52,11 +103,54 @@ def authorize(*args, **kwargs):
 @app.route('/oauth/token', methods=['POST'])
 @oauth.token_handler
 def access_token():
+    """
+        Authorize client
+        Adds a grant for the current user and client in session
+        ---
+        tags:
+          - OAuth
+        parameters:
+          - name: grant_type
+            in: query
+            type: string
+            required: true
+          - name: client_id
+            in: query
+            type: string
+            required: true
+        responses:
+          '200':
+            description: Returns Client
+            schema:
+              id: Client
+              properties:
+                client_id:
+                  type: string
+                  description: client id
+                client_secret:
+                  type: string
+                  description: client secret
+          '401':
+            description: Unauthorized
+        """
     return None
 
 @app.route('/oauth/revoke', methods=['POST'])
 @oauth.revoke_handler
-def revoke_token(): pass
+def revoke_token():
+    """
+    Revoke token
+    Remove the token and revoke users access
+    ---
+    tags:
+      - OAuth
+    parameters:
+      - name: token
+      in: query
+      type: string
+    responses:
+    """
+    pass
 
 
 @oauth.clientgetter
