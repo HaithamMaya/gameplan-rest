@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import random
 import string
 from hashlib import sha512
+import pprint
 
 SIMPLE_CHARS = string.ascii_letters + string.digits
 
@@ -105,23 +106,59 @@ def authorize(*args, **kwargs):
 def access_token():
     """
         Token generator
-        Takes 4 different payloads. A token can be generated from grant_types:
-        Password
-        Client_Credentials
-        Refresh_Token
-        Authorization_Code
+        Takes 4 different payloads dependent on which grant_type specified
         ---
         tags:
           - OAuth
         parameters:
           - name: grant_type
+            description: password, client_credentials, refresh_token, authorization_code
             in: query
             type: string
             required: true
+            default: refresh_token
           - name: client_id
+            description: client id
             in: query
             type: string
             required: true
+          - name: scope
+            description: client id
+            in: query
+            type: string
+            required: true
+          - name: redirect_uri
+            description: redirect uri
+            in: query
+            type: string
+            required: true
+            default: http://127.0.0.1:5000/authorized
+          - name: refresh_token
+            description: refresh token
+            in: query
+            type: string
+            required: false
+          - name: code
+            description: authorization code from grant
+            in: query
+            type: string
+            required: false
+          - name: client_secret
+            description: client secret
+            in: query
+            type: string
+            required: false
+          - name: username
+            description: username
+            in: query
+            type: string
+            required: false
+          - name: password
+            description: password
+            in: query
+            type: string
+            format: password
+            required: false
         responses:
           '200':
             description: Returns Token
@@ -185,7 +222,7 @@ def load_token(access_token=None, refresh_token=None):
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
     toks = db.session.query(Token).filter_by(client_id=request.client.client_id,
-                                 user=request.user)
+                                 user=request.user.id)
     # make sure that every client has only one token connected to a user
     for t in toks:
         db.session.delete(t)
@@ -193,7 +230,7 @@ def save_token(token, request, *args, **kwargs):
     expiresin = token['expires_in']
     expires = datetime.utcnow() + timedelta(seconds=expiresin)
 
-    tok = Token(None, request.client.client_id, request.user, token['token_type'], token['access_token'],
+    tok = Token(None, request.client.client_id, request.user.id, token['token_type'], token['access_token'],
                 token['refresh_token'], expires, token['scope'])
     db.session.add(tok)
     db.session.commit()
