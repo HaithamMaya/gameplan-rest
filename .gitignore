@@ -1,2 +1,4 @@
 .DS_Store
 config*
+.idea/dictionaries
+__pycache__
