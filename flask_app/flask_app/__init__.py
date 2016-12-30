@@ -14,6 +14,8 @@ db = SQLAlchemy(app)
 oauth = OAuth2Provider(app)
 Swagger(app)
 
+HOME_URL = "http://ec2-54-160-178-89.compute-1.amazonaws.com/"
+
 from flask_app.routes import *
 from flask_app.oauth2 import *
 

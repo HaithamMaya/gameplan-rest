@@ -1,4 +1,4 @@
-from flask_app import db
+from flask_app.__init__ import db
 from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from flask_restplus import fields, reqparse
@@ -89,6 +89,18 @@ class Client(Base):
         if self._default_scopes:
             return self._default_scopes.split()
         return []
+
+class Codes(Base):
+    __tablename__ = 'code'
+
+    six_digits = Column(String(6), primary_key=True, nullable=False, unique=True)
+    expires = Column(DateTime)
+    userid = Column(Integer, nullable=False)
+
+    def __init__(self, six_digits, expires, userid):
+        self.six_digits = six_digits
+        self.expires = expires
+        self.userid = userid
 
 
 class Connections(Base):
@@ -306,6 +318,7 @@ class Users(Base):
         userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
         userParser.add_argument('schoolid', type=int, help='School ID required')
         userParser.add_argument('addressid', type=int, help='Address ID required')
+        userParser.add_argument('access_token', type=str, help='Access Token required')
         return userParser
 
     @staticmethod
@@ -321,10 +334,10 @@ class Validators(Base):
 
     userid = Column(Integer)
     validator = Column(String(64), primary_key=True, nullable=False, unique=True)
-    created = Column(DateTime, nullable=False, server_default=text("now()"))
+    expires = Column(DateTime, nullable=False)
 
-    def __init__(self, userid, validator, date):
+    def __init__(self, userid, validator, expires):
         self.userid = userid
         self.validator = validator
-        self.created = date
+        self.expires = expires
 

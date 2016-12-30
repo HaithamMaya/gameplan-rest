@@ -1,5 +1,5 @@
-from flask_app import app, db, oauth
-from flask_app.models import Client, Grant, Token, Users
+from flask_app.__init__ import app, db, oauth, HOME_URL
+from flask_app.models import Client, Grant, Token, Users, Codes
 from flask import redirect, request, render_template, session, jsonify
 from werkzeug.security import gen_salt
 from datetime import datetime, timedelta
@@ -33,28 +33,37 @@ def client():
       '401':
         description: Unauthorized
     """
-    user = current_user()
-    if not user:
-        return redirect('/')
+    six_digits = request.args.get('code')
+    if six_digits is None:
+        print('six_digits: ',six_digits)
+        return False
+    userid = request.args.get('userid')
+    code = checkCode(six_digits, userid)
+    if type(code) is not Codes:
+        return jsonify(code)
+
+
+    user = db.session.query(Users).get(userid)
     if request.user_agent.platform:
         client_name = request.user_agent.platform + " " + request.user_agent.browser
     else:
-        client_name = 'postman'
-    item = Client(gen_salt(40), gen_salt(50), client_name, user.id, False,
+        client_name = 'NONE'
+    item = Client(gen_salt(40), gen_salt(50), client_name, userid, False,
                   ' '.join([
-                      'http://localhost:5000/authorized',
+                      HOME_URL+'/authorized',
                       'http://127.0.0.1:5000/authorized',
                       'https://www.getpostman.com/oauth2/callback',
-                  ]), 'A'
+                  ]), user.role
     )
     db.session.add(item)
     db.session.commit()
+
     return jsonify(
         client_id=item.client_id,
         client_secret=item.secret,
     )
 
-@app.route('/oauth/authorize', methods=['GET', 'POST'])
+@app.route('/oauth/authorize', methods=['GET','POST'])
 @oauth.authorize_handler
 def authorize(*args, **kwargs):
     """
@@ -87,19 +96,11 @@ def authorize(*args, **kwargs):
       '401':
         description: Unauthorized
     """
-    user = current_user()
-    if not user:
-        return redirect('/')
-    if request.method == 'GET':
-        client_id = kwargs.get('client_id')
-        client = db.session.query(Client).get(client_id)
-        kwargs['client'] = client
-        kwargs['user'] = user
-        return render_template('authorize.html', **kwargs)
+    return True
 
-    confirm = request.form.get('confirm', 'no')
-    return confirm == 'yes'
-
+@app.route('/authorized', methods=['GET'])
+def authorized():
+    return jsonify(request.values)
 
 @app.route('/oauth/token', methods=['POST'])
 @oauth.token_handler
@@ -203,7 +204,6 @@ def load_grant(client_id, code):
 
 @oauth.grantsetter
 def save_grant(client_id, code, request, *args, **kwargs):
-    print("save_grant")
     expires = datetime.utcnow() + timedelta(seconds=100)
     grant = Grant(None, current_user().id, client_id, code['code'], request.redirect_uri, expires, ' '.join(request.scopes))
     db.session.add(grant)
@@ -222,15 +222,14 @@ def load_token(access_token=None, refresh_token=None):
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
     toks = db.session.query(Token).filter_by(client_id=request.client.client_id,
-                                 user=request.user.id)
+                                 user=request.user)
     # make sure that every client has only one token connected to a user
     for t in toks:
         db.session.delete(t)
-    #pprint.pprint(token)
     expiresin = token['expires_in']
     expires = datetime.utcnow() + timedelta(seconds=expiresin)
 
-    tok = Token(None, request.client.client_id, request.user.id, token['token_type'], token['access_token'],
+    tok = Token(None, request.client.client_id, request.user, token['token_type'], token['access_token'],
                 token['refresh_token'], expires, token['scope'])
     db.session.add(tok)
     db.session.commit()
@@ -249,10 +248,22 @@ def current_user():
         return db.session.query(Users).get(uid)
     return None
 
-def randomString(length=32):
-    return ''.join(random.choice(SIMPLE_CHARS) for i in range(length))
+def randomString(choices=SIMPLE_CHARS, length=64):
+    return ''.join(random.choice(choices) for i in range(length))
 
 def randomHash(length=32):
     hash = sha512()
     hash.update(randomString())
     return hash.hexdigest()[:length]
+
+def checkCode(c, userid):
+    code = db.session.query(Codes).get(c)
+    if code is None:
+        return {'Error':'Invalid'}
+    elif datetime.utcnow() > code.expires:
+        return {'Error':'Expired'}
+    elif str(code.userid) != userid:
+        print(code.userid, ' != ',userid)
+        return {'Error': 'Invalid!'}
+    else:
+        return code
