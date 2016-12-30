@@ -102,6 +102,13 @@ class Codes(Base):
         self.expires = expires
         self.userid = userid
 
+    @staticmethod
+    def req():
+        codeParser = reqparse.RequestParser()
+        codeParser.add_argument('code', type=str, help='six-digit code required')
+        codeParser.add_argument('userid', type=int, help='user id required')
+        return codeParser
+
 
 class Connections(Base):
     __tablename__ = 'connection'

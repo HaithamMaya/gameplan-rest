@@ -295,17 +295,6 @@ def updateUser():
     """
     pass
 
-@app.route('/verify', methods=['POST'])
-def verifyUser():
-    six_digits = request.args.get('code')
-    if six_digits is None:
-        return jsonify({'Error': 'Invalid'})
-    code = db.session.query(Codes).get(six_digits)
-    if code is not None:
-        if datetime.utcnow() < code.expires:
-            return
-    return ''
-
 @app.route('/validate/<string:v>', methods=['GET', 'POST'])
 def getValidator(v):
     """
@@ -320,44 +309,20 @@ def getValidator(v):
         in: path
         type: string
         required: true
+      - name: email
+        description: user email .split('@')[0]
+        in: path
+        type: string
+        required: true
     responses:
       '200':
-        description: Returns User information
+        description: Returns User ID
         schema:
-          id: GetUser
+          id: UserValidated
           properties:
-            id:
+            user:
               type: integer
               description: user id
-            first:
-              type: string
-              description: first name
-            last:
-              type: string
-              description: last name
-            username:
-              type: string
-              description: username
-            email:
-              type: string
-              description: email address
-            role:
-              type: string
-              description: user role (scope)
-            schoolid:
-              type: integer
-              description: school id
-            addressid:
-              type: integer
-              description: address id
-            created:
-              type: string
-              format: date-time
-              description: time user added to database and sent welcome email
-            joined:
-              type: string
-              format: date-time
-              description: time user created username and password
       '401':
         description: Unauthorized
     """
@@ -389,7 +354,7 @@ def sendCode(v, email):
 def validatorInvalid(v, email):
     validator = db.session.query(Validators).filter_by(validator=v).first()
     if validator is None:
-        return {'Error': 'Invalid'}
+        return {'Error': 'Validator not found'}
     user = db.session.query(Users).get(validator.userid)
     if email != user.email.split('@')[0]:
         return {'Error': 'Invalid email'}

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flask_app/templates/welcome.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/flask_app/flask_app/templates/alert.html" afterPath="$PROJECT_DIR$/flask_app/flask_app/templates/verify.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/models.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/routes.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
@@ -19,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/gameplan-rest$gameplan_rest.coverage" NAME="gameplan-rest Coverage Results" MODIFIED="1483071454352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_app/flask_app" />
+    <SUITE FILE_PATH="coverage/gameplan-rest$gameplan_rest.coverage" NAME="gameplan-rest Coverage Results" MODIFIED="1483074541482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_app/flask_app" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -62,15 +58,15 @@
       <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="372" column="0" lean-forward="true" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
+            <state relative-caret-position="960">
+              <caret line="295" column="8" lean-forward="false" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
                 <element signature="e#466#947#1" expanded="false" />
                 <element signature="e#1245#2724#1" expanded="false" />
                 <element signature="e#2873#4984#1" expanded="false" />
                 <element signature="e#5989#8073#1" expanded="false" />
-                <element signature="e#8496#9945#1" expanded="false" />
+                <element signature="e#8169#8837#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,13 +75,14 @@
       <file leaf-file-name="oauth2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="227" column="28" lean-forward="false" selection-start-line="227" selection-start-column="28" selection-end-line="227" selection-end-column="28" />
+            <state relative-caret-position="855">
+              <caret line="135" column="4" lean-forward="false" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
-                <element signature="e#451#942#1" expanded="false" />
-                <element signature="e#2000#2665#1" expanded="false" />
-                <element signature="e#2870#5290#1" expanded="false" />
+                <element signature="e#452#1242#1" expanded="false" />
+                <element signature="e#2234#2842#1" expanded="false" />
+                <element signature="e#2925#3365#1" expanded="false" />
+                <element signature="e#3492#5898#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -94,9 +91,11 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="255">
+              <caret line="107" column="59" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -210,8 +209,8 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/templates/welcome.html" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/config/config_mail.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
-        <option value="$PROJECT_DIR$/flask_app/flask_app/models.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/templates/verify.html" />
+        <option value="$PROJECT_DIR$/flask_app/flask_app/models.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
       </list>
@@ -668,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482729873582</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="welcome email-&gt;send code-&gt;enter code-&gt;user verified and OAuth access token received">
+      <created>1483071992039</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1483071992039</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -720,7 +726,8 @@
     <MESSAGE value="flasgger setup, most routes documented" />
     <MESSAGE value="modified wsgi, everything functioning on ec2 server" />
     <MESSAGE value="fixed oauth password grant_type query" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed oauth password grant_type query" />
+    <MESSAGE value="welcome email-&gt;send code-&gt;enter code-&gt;user verified and OAuth access token received" />
+    <option name="LAST_COMMIT_MESSAGE" value="welcome email-&gt;send code-&gt;enter code-&gt;user verified and OAuth access token received" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,19 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.code">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sqlalchemy/orm/query.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1842">
@@ -1097,14 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.client">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1144,30 +1130,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.code">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="107" column="59" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="372" column="0" lean-forward="true" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
+        <state relative-caret-position="960">
+          <caret line="295" column="8" lean-forward="false" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
             <element signature="e#466#947#1" expanded="false" />
             <element signature="e#1245#2724#1" expanded="false" />
             <element signature="e#2873#4984#1" expanded="false" />
             <element signature="e#5989#8073#1" expanded="false" />
-            <element signature="e#8496#9945#1" expanded="false" />
+            <element signature="e#8169#8837#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="227" column="28" lean-forward="false" selection-start-line="227" selection-start-column="28" selection-end-line="227" selection-end-column="28" />
+        <state relative-caret-position="855">
+          <caret line="135" column="4" lean-forward="false" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="4" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-            <element signature="e#451#942#1" expanded="false" />
-            <element signature="e#2000#2665#1" expanded="false" />
-            <element signature="e#2870#5290#1" expanded="false" />
+            <element signature="e#452#1242#1" expanded="false" />
+            <element signature="e#2234#2842#1" expanded="false" />
+            <element signature="e#2925#3365#1" expanded="false" />
+            <element signature="e#3492#5898#1" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -10,17 +10,30 @@ import pprint
 
 SIMPLE_CHARS = string.ascii_letters + string.digits
 
-@app.route('/client', methods=['GET'])
+@app.route('/client', methods=['POST'])
 def client():
     """
     New client
-    Adds a new client for the current user in session, and returns id and secret
+    Adds a new client and returns id and secret
     ---
     tags:
       - OAuth
+    parameters:
+      - name: verification
+        description: verification code and user id
+        in: body
+        schema:
+          id: Verify
+          properties:
+            code:
+              type: string
+              description: six-digit code
+            userid:
+              type: integer
+              description: user id
     responses:
       '200':
-        description: Returns Client
+        description: Client
         schema:
           id: Client
           properties:
@@ -33,15 +46,14 @@ def client():
       '401':
         description: Unauthorized
     """
-    six_digits = request.args.get('code')
+    args = Codes.req().parse_args(strict=True)
+    six_digits = args.get('code')
     if six_digits is None:
-        print('six_digits: ',six_digits)
-        return False
-    userid = request.args.get('userid')
+        return jsonify(Error='No Code')
+    userid = args.get('userid')
     code = checkCode(six_digits, userid)
     if type(code) is not Codes:
         return jsonify(code)
-
 
     user = db.session.query(Users).get(userid)
     if request.user_agent.platform:
@@ -52,7 +64,6 @@ def client():
                   ' '.join([
                       HOME_URL+'/authorized',
                       'http://127.0.0.1:5000/authorized',
-                      'https://www.getpostman.com/oauth2/callback',
                   ]), user.role
     )
     db.session.add(item)
@@ -63,7 +74,7 @@ def client():
         client_secret=item.secret,
     )
 
-@app.route('/oauth/authorize', methods=['GET','POST'])
+@app.route('/oauth/authorize', methods=['POST'])
 @oauth.authorize_handler
 def authorize(*args, **kwargs):
     """
@@ -73,26 +84,25 @@ def authorize(*args, **kwargs):
     tags:
       - OAuth
     parameters:
-      - name: grant_type
+      - name: client_id
         in: query
         type: string
         required: true
-      - name: client_id
+      - name: redirect_uri
+        in: query
+        type: string
+        required: true
+      - name: scope
+        in: query
+        type: string
+        required: true
+      - name: response_type
         in: query
         type: string
         required: true
     responses:
       '200':
-        description: Returns Client
-        schema:
-          id: Client
-          properties:
-            client_id:
-              type: string
-              description: client id
-            client_secret:
-              type: string
-              description: client secret
+        description: Redirects to /authorized
       '401':
         description: Unauthorized
     """
@@ -100,6 +110,24 @@ def authorize(*args, **kwargs):
 
 @app.route('/authorized', methods=['GET'])
 def authorized():
+    """
+        Client authorized
+        redirect page after client receives grant
+        ---
+        tags:
+          - OAuth
+        responses:
+          '200':
+            description: Code (or error)
+            schema:
+              id: Response code
+              properties:
+                code:
+                  type: string
+                  description: grant code
+          '401':
+            description: Unauthorized
+        """
     return jsonify(request.values)
 
 @app.route('/oauth/token', methods=['POST'])
@@ -117,7 +145,7 @@ def access_token():
             in: query
             type: string
             required: true
-            default: refresh_token
+            default:
           - name: client_id
             description: client id
             in: query
@@ -259,11 +287,11 @@ def randomHash(length=32):
 def checkCode(c, userid):
     code = db.session.query(Codes).get(c)
     if code is None:
-        return {'Error':'Invalid'}
+        return {'Error':'Code not found'}
     elif datetime.utcnow() > code.expires:
         return {'Error':'Expired'}
     elif str(code.userid) != userid:
         print(code.userid, ' != ',userid)
-        return {'Error': 'Invalid!'}
+        return {'Error': 'User ID does not match'}
     else:
         return code
