@@ -1,6 +1,6 @@
-from flask_app.__init__ import app, db, oauth, HOME_URL
+from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
 from flask_app.models import Users, Validators, Codes, Schools
-from flask_app.oauth2 import current_user, randomString
+from flask_app.oauth2 import randomString
 from flask import redirect, request, render_template, session, jsonify
 from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -11,6 +11,7 @@ import pprint
 mailer = Mail(app)
 VALIDATOR_DURATION_DAYS = 30
 CODE_DURATION_MINUTES = 15
+
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
@@ -42,14 +43,7 @@ def test():
     for i in request.environ:
         r[str(i)] = str(request.environ[i])
 
-    password = request.form.get('ered')
-
-    role = 'A'
-    h = generate_password_hash(password+role, ENCRYPTION_METHOD, 8).split('$')
-    salt = h[1]
-    h = h[2]
-
-    print(check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD,salt,h), password+role))
+    print(app.config['SECRET_KEY'])
 
     return jsonify(r)
 
@@ -57,6 +51,7 @@ def test():
 @app.route('/', methods=('GET', 'POST'))
 def home():
     return redirect('/apidocs/index.html')
+
 
 @app.route('/user/<int:id>', methods=['GET'])
 @oauth.require_oauth()
@@ -203,8 +198,8 @@ def postUser():
         description: Unauthorized
     """
     args = Users.req().parse_args(strict=True)
-    user = Users(None,args['first'],args['last'],None,args['email'],args['role'],args['schoolid'],
-                 args['addressid'],None,None)
+    user = Users(None, args['first'], args['last'], None, args['email'], args['role'], args['schoolid'],
+                 args['addressid'], None, None)
     db.session.add(user)
     db.session.commit()
     school = db.session.query(Schools).get(user.schoolid)
@@ -307,6 +302,7 @@ def updateUser(id):
       '401':
         description: Unauthorized
     """
+    r = []
     user = db.session.query(Users).get(id)
     if user is None:
         return jsonify(Error='Invalid user ID')
@@ -315,12 +311,16 @@ def updateUser(id):
         h = generate_password_hash(password + user.role, ENCRYPTION_METHOD, 8).split('$')
         user.salt = h[1]
         user.hash = h[2]
+        r.append('password')
     if request.form.get('first') is not None:
-        user.first = request.data.get('first')
+        user.first = request.form.get('first')
+        r.append('first')
     if request.form.get('last') is not None:
-        user.first = request.data.get('last')
+        user.first = request.form.get('last')
+        r.append('last')
 
     db.session.commit()
+    return jsonify(updated=r)
 
 
 @app.route('/validate/<string:v>', methods=['GET', 'POST'])
@@ -355,14 +355,15 @@ def getValidator(v):
         description: Unauthorized
     """
     if request.args.get('email') is None:
-        return jsonify({'Error':'Invalid!'})
+        return jsonify({'Error': 'Invalid!'})
     validator = validatorInvalid(v, parse.unquote(request.args.get('email')))
     if type(validator) is not Validators:
         return jsonify(validator)
     elif request.method == 'POST':
         return sendCode(validator, request.args.get('email'))
     else:
-        return jsonify({'user':(validator.userid)})
+        return jsonify({'user': (validator.userid)})
+
 
 def sendCode(v, email):
     user = db.session.query(Users).get(v.userid)
@@ -386,7 +387,7 @@ def validatorInvalid(v, email):
     user = db.session.query(Users).get(validator.userid)
     if email != user.email.split('@')[0]:
         return {'Error': 'Invalid email'}
-    elif timedelta(validator.expires, datetime.utcnow()):
+    elif validator.expires < datetime.utcnow():
         return {'Error': 'Expired'}
     else:
         return validator

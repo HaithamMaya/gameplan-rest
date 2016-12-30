@@ -1,6 +1,6 @@
 from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
 from flask_app.models import Client, Grant, Token, Users, Codes
-from flask import redirect, request, render_template, session, jsonify
+from flask import request, jsonify
 from werkzeug.security import gen_salt, check_password_hash
 from datetime import datetime, timedelta
 import random
@@ -9,6 +9,7 @@ from hashlib import sha512
 import pprint
 
 SIMPLE_CHARS = string.ascii_letters + string.digits
+
 
 @app.route('/client', methods=['POST'])
 def client():
@@ -62,10 +63,10 @@ def client():
         client_name = 'NONE'
     item = Client(gen_salt(40), gen_salt(50), client_name, userid, False,
                   ' '.join([
-                      HOME_URL+'/authorized',
+                      HOME_URL + '/authorized',
                       'http://127.0.0.1:5000/authorized',
                   ]), user.role
-    )
+                  )
     db.session.add(item)
     db.session.commit()
 
@@ -73,6 +74,7 @@ def client():
         client_id=item.client_id,
         client_secret=item.secret,
     )
+
 
 @app.route('/oauth/authorize', methods=['POST'])
 @oauth.authorize_handler
@@ -108,27 +110,55 @@ def authorize(*args, **kwargs):
     """
     return True
 
+
 @app.route('/authorized', methods=['GET'])
 def authorized():
     """
-        Client authorized
-        redirect page after client receives grant
-        ---
-        tags:
-          - OAuth
-        responses:
-          '200':
-            description: Code (or error)
-            schema:
-              id: Response code
-              properties:
-                code:
-                  type: string
-                  description: grant code
-          '401':
-            description: Unauthorized
-        """
+    Client authorized
+    redirect page after client receives grant
+    ---
+    tags:
+      - OAuth
+    responses:
+      '200':
+        description: Code (or error)
+        schema:
+          id: Response code
+          properties:
+            code:
+              type: string
+              description: grant code
+      '401':
+        description: Unauthorized
+    """
     return jsonify(request.values)
+
+
+@app.route('/oauth/errors', methods=['GET'])
+def errors():
+    """
+    Error - client not authorized
+    redirect page after client fails to receives grant and an error occurs
+    ---
+    tags:
+      - OAuth
+    responses:
+      '200':
+        description: Error(s)
+        schema:
+          id: Error
+          properties:
+            error:
+              type: string
+              description: probably grant invalid
+            error_description:
+              type: string
+              description: the cause of the error
+      '401':
+        description: Unauthorized
+    """
+    return jsonify(request.values)
+
 
 @app.route('/oauth/token', methods=['POST'])
 @oauth.token_handler
@@ -214,9 +244,32 @@ def access_token():
         """
     return None
 
+
 @app.route('/oauth/revoke', methods=['POST'])
 @oauth.revoke_handler
-def revoke_token(): pass
+def revoke_token():
+    """
+    Revoke token (not working)
+    revoke a users access token
+    ---
+    tags:
+      - OAuth
+    responses:
+      '200':
+        description: Error(s)
+        schema:
+          id: Error
+          properties:
+            error:
+              type: string
+              description: probably grant invalid
+            error_description:
+              type: string
+              description: the cause of the error
+      '401':
+        description: Unauthorized
+    """
+    pass
 
 
 @oauth.clientgetter
@@ -231,8 +284,9 @@ def load_grant(client_id, code):
 
 @oauth.grantsetter
 def save_grant(client_id, code, request, *args, **kwargs):
-    expires = datetime.utcnow() + timedelta(seconds=100)
-    grant = Grant(None, current_user().id, client_id, code['code'], request.redirect_uri, expires, ' '.join(request.scopes))
+    expires = datetime.utcnow() + timedelta(seconds=60)
+    grant = Grant(None, request.client.userid, client_id, code['code'], request.redirect_uri, expires,
+                  ' '.join(request.scopes))
     db.session.add(grant)
     db.session.commit()
     return grant
@@ -248,49 +302,53 @@ def load_token(access_token=None, refresh_token=None):
 
 @oauth.tokensetter
 def save_token(token, request, *args, **kwargs):
+    if type(request.user) is Users:
+        userid = request.user.id
+    else:
+        userid = request.user
     toks = db.session.query(Token).filter_by(client_id=request.client.client_id,
-                                 user=request.user)
+                                             user=userid)
     # make sure that every client has only one token connected to a user
     for t in toks:
         db.session.delete(t)
     expiresin = token['expires_in']
     expires = datetime.utcnow() + timedelta(seconds=expiresin)
 
-    tok = Token(None, request.client.client_id, request.user, token['token_type'], token['access_token'],
+    tok = Token(None, request.client.client_id, userid, token['token_type'], token['access_token'],
                 token['refresh_token'], expires, token['scope'])
     db.session.add(tok)
     db.session.commit()
     return tok
 
+
 @oauth.usergetter
 def get_user(username, password, *args, **kwargs):
     user = db.session.query(Users).filter_by(username=username).first()
-    if check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD,user.salt,user.hash), password+user.role):
+    if check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD, user.salt, user.hash), password + user.role):
+        print('correct')
         return user
-    return user
+    print('incorrect')
+    return False
 
-def current_user():
-    if 'id' in session:
-        uid = session['id']
-        return db.session.query(Users).get(uid)
-    return None
 
 def randomString(length=64, choices=SIMPLE_CHARS):
     return ''.join(random.choice(choices) for i in range(length))
+
 
 def randomHash(length=32):
     hash = sha512()
     hash.update(randomString())
     return hash.hexdigest()[:length]
 
+
 def checkCode(c, userid):
     code = db.session.query(Codes).get(c)
     if code is None:
-        return {'Error':'Code not found'}
+        return {'Error': 'Code not found'}
     elif datetime.utcnow() > code.expires:
-        return {'Error':'Expired'}
+        return {'Error': 'Expired'}
     elif str(code.userid) != userid:
-        print(code.userid, ' != ',userid)
+        print(code.userid, ' != ', userid)
         return {'Error': 'User ID does not match'}
     else:
         return code

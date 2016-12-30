@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2016-12-29.18:37:48.503</IntrospectionTimestamp>
-      <IntrospectionStateNumber>18172</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2016-12-30.10:28:19.086</IntrospectionTimestamp>
+      <IntrospectionStateNumber>18403</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -130,7 +130,7 @@
     </table>
     <table id="31" parent="3" name="users">
       <ObjectId>16626</ObjectId>
-      <StateNumber>2208</StateNumber>
+      <StateNumber>18403</StateNumber>
     </table>
     <table id="32" parent="3" name="validator">
       <ObjectId>16636</ObjectId>
@@ -734,8 +734,8 @@
     </column>
     <column id="139" parent="31" name="salt">
       <Position>10</Position>
-      <DataType>char(16)|0</DataType>
-      <StateNumber>2208</StateNumber>
+      <DataType>varchar(16)|0</DataType>
+      <StateNumber>18403</StateNumber>
     </column>
     <column id="140" parent="31" name="created">
       <Position>11</Position>

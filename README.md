@@ -7,17 +7,20 @@ http://127.0.0.1:5000/  (local)
 https://pythonhosted.org/Flask-Security/  
 http://flask.pocoo.org/docs/0.11/patterns/sqlalchemy/  
 https://flask-restplus.readthedocs.io/en/stable/   
-https://flask-oauthlib.readthedocs.io/en/latest/oauth2.html#example-for-oauth-2
+https://flask-oauthlib.readthedocs.io/en/latest/oauth2.html#example-for-oauth-2   
+https://github.com/rochacbruno/flasgger/blob/master/flasgger/example_app.py   
+http://swagger.io/specification/#schemaObject   
 
 
 ###Packages installed
 ```
 pip3 install flask
-pip3 install flask-restplus
+#pip3 install flask-restplus
 pip3 install flask-sqlalchemy
 #pip3 install flask-security
 pip3 install flask-oauthlib
 pip3 install sqlalchemy
+pip3 install flasgger
 sudo apt-get install psycopg2
 ```
 on remote server

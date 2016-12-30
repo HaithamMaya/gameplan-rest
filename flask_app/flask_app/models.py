@@ -1,11 +1,12 @@
 from flask_app.__init__ import db
 from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
-from flask_restplus import fields, reqparse
+from flask_restplus import reqparse
 from flask import jsonify
 
 Base = declarative_base()
 metadata = Base.metadata
+
 
 class Addresses(Base):
     __tablename__ = 'address'
@@ -16,17 +17,6 @@ class Addresses(Base):
     city = Column(String(100), nullable=False)
     state = Column(String(2), nullable=False)
     zip = Column(String(5), nullable=False)
-
-
-class Auths(Base):
-    __tablename__ = 'auth'
-
-    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
-    userid = Column(Integer, nullable=False, unique=True)
-    created = Column(DateTime, nullable=False)
-    oauthtoken = Column(String(64), nullable=False, unique=True)
-    refresh_token = Column(String(64), nullable=False, unique=True)
-    expiration = Column(DateTime, nullable=False)
 
 
 class Brags(Base):
@@ -47,6 +37,7 @@ class Categories(Base):
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     name = Column(String(64), nullable=False)
     type = Column(String(1), nullable=False)
+
 
 class Client(Base):
     __tablename__ = 'client'
@@ -89,6 +80,7 @@ class Client(Base):
         if self._default_scopes:
             return self._default_scopes.split()
         return []
+
 
 class Codes(Base):
     __tablename__ = 'code'
@@ -152,18 +144,6 @@ class Grant(Base):
         self.expires = expires
         self._scopes = scopes
 
-    @property
-    def modelJson(api):
-        newUserModel = api.model('New User', {
-            'first': fields.String,
-            'last': fields.String,
-            'email': fields.String,
-            'role': fields.String,
-            'schoolid': fields.Integer,
-            'addressid': fields.Integer,
-        })
-        return newUserModel
-
     @staticmethod
     def req():
         grantParser = reqparse.RequestParser()
@@ -174,7 +154,6 @@ class Grant(Base):
         grantParser.add_argument('schoolid', type=int, help='School ID required')
         grantParser.add_argument('addressid', type=int, help='Address ID required')
         return grantParser
-
 
     def delete(self):
         db.session.delete(self)
@@ -205,11 +184,11 @@ class Schools(Base):
     adminid = Column(Integer, nullable=False)
     addressid = Column(Integer, nullable=False)
 
-    def __init__(self, id, name, adminid, addressid):
-        self.id = id
-        self.name = name
-        self.adminid = adminid
-        self.addressid = addressid
+    # def __init__(self, id, name, adminid, addressid):
+    #     self.id = id
+    #     self.name = name
+    #     self.adminid = adminid
+    #     self.addressid = addressid
 
 
 class Token(Base):
@@ -234,9 +213,9 @@ class Token(Base):
         self.expires = expires
         self._scopes = scopes
 
-
     def delete(self):
-        #need to implement
+        db.session.delete(self)
+        db.session.commit()
         return self
 
     @staticmethod
@@ -289,34 +268,6 @@ class Users(Base):
         })
 
     @staticmethod
-    def modelJson(api):
-        userModel = api.model('User', {
-            'id': fields.Integer,
-            'first': fields.String,
-            'last': fields.String,
-            'username': fields.String,
-            'email': fields.String,
-            'role': fields.String,
-            'schoolid': fields.Integer,
-            'addressid': fields.Integer,
-            'created': fields.DateTime,
-            'joined': fields.DateTime
-        })
-        return userModel
-
-    @staticmethod
-    def modelPost(api):
-        newUserModel = api.model('New User', {
-            'first': fields.String,
-            'last': fields.String,
-            'email': fields.String,
-            'role': fields.String,
-            'schoolid': fields.Integer,
-            'addressid': fields.Integer,
-        })
-        return newUserModel
-
-    @staticmethod
     def req():
         userParser = reqparse.RequestParser()
         userParser.add_argument('first', type=str, help='First name required')
@@ -347,4 +298,3 @@ class Validators(Base):
         self.userid = userid
         self.validator = validator
         self.expires = expires
-
