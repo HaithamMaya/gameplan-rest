@@ -3,14 +3,16 @@ from flask_app.models import Users, Validators, Codes, Schools
 from flask_app.oauth2 import current_user, randomString
 from flask import redirect, request, render_template, session, jsonify
 from flask_mail import Mail, Message
+from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 import urllib.parse as parse
+import pprint
 
 mailer = Mail(app)
 VALIDATOR_DURATION_DAYS = 30
 CODE_DURATION_MINUTES = 15
 
-@app.route('/test')
+@app.route('/test', methods=['GET', 'POST'])
 def test():
     """
     Test function
@@ -39,6 +41,15 @@ def test():
     r = {}
     for i in request.environ:
         r[str(i)] = str(request.environ[i])
+
+    password = request.form.get('ered')
+
+    role = 'A'
+    h = generate_password_hash(password+role, ENCRYPTION_METHOD, 8).split('$')
+    salt = h[1]
+    h = h[2]
+
+    print(check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD,salt,h), password+role))
 
     return jsonify(r)
 
@@ -213,9 +224,9 @@ def postUser():
     return user.JSON()
 
 
-@app.route('/update', methods=['POST'])
+@app.route('/update/<int:id>', methods=['POST'])
 @oauth.require_oauth()
-def updateUser():
+def updateUser(id):
     """
     Update user
     Updates specified fields then returns updated user object
@@ -258,6 +269,9 @@ def updateUser():
         schema:
           id: GetUser
           properties:
+            updated:
+              type: string
+              description: fields updated
             id:
               type: integer
               description: user id
@@ -293,7 +307,21 @@ def updateUser():
       '401':
         description: Unauthorized
     """
-    pass
+    user = db.session.query(Users).get(id)
+    if user is None:
+        return jsonify(Error='Invalid user ID')
+    if request.form.get('password') is not None:
+        password = request.form.get('password')
+        h = generate_password_hash(password + user.role, ENCRYPTION_METHOD, 8).split('$')
+        user.salt = h[1]
+        user.hash = h[2]
+    if request.form.get('first') is not None:
+        user.first = request.data.get('first')
+    if request.form.get('last') is not None:
+        user.first = request.data.get('last')
+
+    db.session.commit()
+
 
 @app.route('/validate/<string:v>', methods=['GET', 'POST'])
 def getValidator(v):
@@ -339,7 +367,7 @@ def getValidator(v):
 def sendCode(v, email):
     user = db.session.query(Users).get(v.userid)
     expires = datetime.utcnow() + timedelta(minutes=CODE_DURATION_MINUTES)
-    code = Codes(randomString('1234567890', 6), expires, v.userid)
+    code = Codes(randomString(6, '1234567890'), expires, v.userid)
     db.session.add(code)
     url = HOME_URL + '/validate/' + v.validator + '?email=' + email
 

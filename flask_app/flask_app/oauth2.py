@@ -1,7 +1,7 @@
-from flask_app.__init__ import app, db, oauth, HOME_URL
+from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
 from flask_app.models import Client, Grant, Token, Users, Codes
 from flask import redirect, request, render_template, session, jsonify
-from werkzeug.security import gen_salt
+from werkzeug.security import gen_salt, check_password_hash
 from datetime import datetime, timedelta
 import random
 import string
@@ -145,7 +145,6 @@ def access_token():
             in: query
             type: string
             required: true
-            default:
           - name: client_id
             description: client id
             in: query
@@ -266,8 +265,8 @@ def save_token(token, request, *args, **kwargs):
 @oauth.usergetter
 def get_user(username, password, *args, **kwargs):
     user = db.session.query(Users).filter_by(username=username).first()
-    #if user.check_password(password):
-        #return user
+    if check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD,user.salt,user.hash), password+user.role):
+        return user
     return user
 
 def current_user():
@@ -276,7 +275,7 @@ def current_user():
         return db.session.query(Users).get(uid)
     return None
 
-def randomString(choices=SIMPLE_CHARS, length=64):
+def randomString(length=64, choices=SIMPLE_CHARS):
     return ''.join(random.choice(choices) for i in range(length))
 
 def randomHash(length=32):

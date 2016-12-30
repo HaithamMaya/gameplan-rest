@@ -15,6 +15,7 @@ oauth = OAuth2Provider(app)
 Swagger(app)
 
 HOME_URL = "http://ec2-54-160-178-89.compute-1.amazonaws.com/"
+ENCRYPTION_METHOD = 'pbkdf2:sha1'
 
 from flask_app.routes import *
 from flask_app.oauth2 import *
