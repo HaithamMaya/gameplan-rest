@@ -254,6 +254,17 @@ def revoke_token():
     ---
     tags:
       - OAuth
+    parameters:
+      - name: token
+        description: refresh or access token
+        type: string
+        in: query
+        required: true
+      - name: client_id
+        description: client id
+        type: string
+        in: query
+        required: true
     responses:
       '200':
         description: Error(s)

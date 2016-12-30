@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flask_app/flask_app/templates/authorize.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/flask_app/flask_app/templates/oauthorize.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/765a7582-2c3c-4608-ac66-032e375880ca.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/models.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/routes.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,10 +53,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="1920">
               <caret line="390" column="35" lean-forward="true" selection-start-line="390" selection-start-column="35" selection-end-line="390" selection-end-column="35" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
@@ -78,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oauth2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="oauth2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="258" column="29" lean-forward="true" selection-start-line="258" selection-start-column="29" selection-end-line="258" selection-end-column="29" />
+            <state relative-caret-position="230">
+              <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="250" selection-end-column="4" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
                 <element signature="e#457#1247#1" expanded="false" />
@@ -90,22 +82,8 @@
                 <element signature="e#2948#3320#1" expanded="false" />
                 <element signature="e#3421#3940#1" expanded="false" />
                 <element signature="e#4068#6453#1" expanded="false" />
+                <element signature="e#6564#7297#1" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostgresDB1.public.token" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.token">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -219,10 +197,10 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/templates/verify.html" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
         <option value="/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask_oauthlib/provider/oauth2.py" />
-        <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/models.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
       </list>
     </option>
   </component>
@@ -698,12 +676,19 @@
       <option name="project" value="LOCAL" />
       <updated>1483079852212</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="checking password fix and updating documentation">
+      <created>1483116863937</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1483116863937</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19206145" sideWeight="0.37339056" order="7" side_tool="true" content_ui="tabs" />
@@ -713,7 +698,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14212549" sideWeight="0.70672387" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.36450383" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13376252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13376252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.6354962" order="4" side_tool="false" content_ui="tabs" x="587" y="57" width="265" height="804" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -753,7 +738,8 @@
     <MESSAGE value="welcome email-&gt;send code-&gt;enter code-&gt;user verified and OAuth access token received" />
     <MESSAGE value="documenting swagger and added verification code request parser" />
     <MESSAGE value="generating and checking user password" />
-    <option name="LAST_COMMIT_MESSAGE" value="generating and checking user password" />
+    <MESSAGE value="checking password fix and updating documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="checking password fix and updating documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1112,39 +1098,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.token">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask_oauthlib/provider/oauth2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="962" column="51" lean-forward="true" selection-start-line="962" selection-start-column="51" selection-end-line="962" selection-end-column="51" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="258" column="29" lean-forward="true" selection-start-line="258" selection-start-column="29" selection-end-line="258" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-            <element signature="e#457#1247#1" expanded="false" />
-            <element signature="e#2256#2864#1" expanded="false" />
-            <element signature="e#2948#3320#1" expanded="false" />
-            <element signature="e#3421#3940#1" expanded="false" />
-            <element signature="e#4068#6453#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,9 +1145,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.token">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="1920">
           <caret line="390" column="35" lean-forward="true" selection-start-line="390" selection-start-column="35" selection-end-line="390" selection-end-column="35" />
           <folding>
             <element signature="e#0#74#0" expanded="true" />
@@ -1198,6 +1169,22 @@
             <element signature="e#3030#5141#1" expanded="false" />
             <element signature="e#6165#8339#1" expanded="false" />
             <element signature="e#9106#9774#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="250" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+            <element signature="e#457#1247#1" expanded="false" />
+            <element signature="e#2256#2864#1" expanded="false" />
+            <element signature="e#2948#3320#1" expanded="false" />
+            <element signature="e#3421#3940#1" expanded="false" />
+            <element signature="e#4068#6453#1" expanded="false" />
+            <element signature="e#6564#7297#1" expanded="false" />
           </folding>
         </state>
       </provider>
