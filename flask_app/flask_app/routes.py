@@ -332,14 +332,14 @@ def getValidator(v):
     tags:
       - Users
     parameters:
-      - name: validator
+      - name: v
         description: validator string
         in: path
         type: string
         required: true
       - name: email
         description: user email .split('@')[0]
-        in: path
+        in: query
         type: string
         required: true
     responses:
@@ -355,7 +355,7 @@ def getValidator(v):
         description: Unauthorized
     """
     if request.args.get('email') is None:
-        return jsonify({'Error': 'Invalid!'})
+        return jsonify({'Error': 'Invalid! no email'})
     validator = validatorInvalid(v, parse.unquote(request.args.get('email')))
     if type(validator) is not Validators:
         return jsonify(validator)
@@ -370,6 +370,7 @@ def sendCode(v, email):
     expires = datetime.utcnow() + timedelta(minutes=CODE_DURATION_MINUTES)
     code = Codes(randomString(6, '1234567890'), expires, v.userid)
     db.session.add(code)
+    db.session.commit()
     url = HOME_URL + '/validate/' + v.validator + '?email=' + email
 
     msg = Message("Verification Code")

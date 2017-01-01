@@ -52,6 +52,8 @@ def client():
     if six_digits is None:
         return jsonify(Error='No Code')
     userid = args.get('userid')
+    if userid is None:
+        return jsonify(Error='No User ID')
     code = checkCode(six_digits, userid)
     if type(code) is not Codes:
         return jsonify(code)
@@ -354,12 +356,12 @@ def randomHash(length=32):
 
 def checkCode(c, userid):
     code = db.session.query(Codes).get(c)
+    print(c)
     if code is None:
         return {'Error': 'Code not found'}
     elif datetime.utcnow() > code.expires:
         return {'Error': 'Expired'}
-    elif str(code.userid) != userid:
-        print(code.userid, ' != ', userid)
+    elif code.userid != userid:
         return {'Error': 'User ID does not match'}
     else:
         return code
