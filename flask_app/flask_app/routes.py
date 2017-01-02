@@ -15,30 +15,6 @@ CODE_DURATION_MINUTES = 15
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    """
-    Test function
-    Returns random stuff
-    ---
-    tags:
-      - Test
-    parameters:
-      - name: something
-        in: path
-        type: string
-        required: false
-    responses:
-      '200':
-        description: Something
-        schema:
-          id: user_response
-          properties:
-            something:
-              type: string
-              description: The **** ?
-              default: some_thing
-      '401':
-        description: Unauthorized
-    """
     r = {}
     for i in request.environ:
         r[str(i)] = str(request.environ[i])
@@ -48,7 +24,7 @@ def test():
     return jsonify(r)
 
 
-@app.route('/', methods=('GET', 'POST'))
+@app.route('/', methods=['GET'])
 def home():
     return redirect('/apidocs/index.html')
 
@@ -114,6 +90,7 @@ def getUser(id):
         description: Unauthorized
     """
     user = db.session.query(Users).get(id)
+    print(user.id)
     return user.JSON()
 
 
@@ -323,11 +300,11 @@ def updateUser(id):
     return jsonify(updated=r)
 
 
-@app.route('/validate/<string:v>', methods=['GET', 'POST'])
-def getValidator(v):
+@app.route('/validate/<string:v>', methods=['GET'])
+def getValidatorUser(v):
     """
     Get user from validator
-    Gets user info associated with randomly generated validator string
+    Gets user ID associated with randomly generated validator string
     ---
     tags:
       - Users
@@ -354,16 +331,58 @@ def getValidator(v):
       '401':
         description: Unauthorized
     """
-    if request.args.get('email') is None:
-        return jsonify({'Error': 'Invalid! no email'})
-    validator = validatorInvalid(v, parse.unquote(request.args.get('email')))
+    validator = validatorRequestCheck(v, request.args.get('email'))
+    if type(validator) is Validators:
+        return jsonify({'user': (validator.userid)})
+    return validator
+
+@app.route('/validate/<string:v>', methods=['POST'])
+def sendValidatorCode(v):
+    """
+    Email verification code to user
+    Gets the user from the validator and email, then sends a 6-digit verification code to the user
+    ---
+    tags:
+      - Users
+    parameters:
+      - name: v
+        description: validator string
+        in: path
+        type: string
+        required: true
+      - name: email
+        description: user email .split('@')[0]
+        in: query
+        type: string
+        required: true
+    responses:
+      '200':
+        description: Returns verification code expiration
+        schema:
+          id: VerificationCode
+          properties:
+            Expires:
+              type: string
+              description: user id
+            Email:
+              type: string
+              description: Time code expires (GMT)
+      '401':
+        description: Unauthorized
+    """
+    validator = validatorRequestCheck(v, request.args.get('email'))
+    if type(validator) is Validators:
+        return sendCode(validator, request.args.get('email'))
+    return validator
+
+def validatorRequestCheck(v, email):
+    if email is None:
+        return jsonify({'Error': 'Invalid! No email'})
+
+    validator = validatorInvalid(v, parse.unquote(email))
     if type(validator) is not Validators:
         return jsonify(validator)
-    elif request.method == 'POST':
-        return sendCode(validator, request.args.get('email'))
-    else:
-        return jsonify({'user': (validator.userid)})
-
+    return validator
 
 def sendCode(v, email):
     user = db.session.query(Users).get(v.userid)
@@ -378,7 +397,7 @@ def sendCode(v, email):
     msg.html = render_template('verify.html', first=user.first, code=code.six_digits, url=url)
     mailer.send(msg)
     print('sent {0} {1}'.format(user.id, user.email))
-    return jsonify({'Sent': user.email, 'Expires': expires})
+    return jsonify({'Email': user.email, 'Expires': expires})
 
 
 def validatorInvalid(v, email):

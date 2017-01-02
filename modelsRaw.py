@@ -10,7 +10,7 @@ metadata = Base.metadata
 class Addres(Base):
     __tablename__ = 'address'
 
-    id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('address_id_seq'::regclass)"))
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     line1 = Column(String(100), nullable=False)
     line2 = Column(String(100))
     city = Column(String(100), nullable=False)
@@ -21,7 +21,7 @@ class Addres(Base):
 class Brag(Base):
     __tablename__ = 'brag'
 
-    id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('brag_id_seq'::regclass)"))
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     authorid = Column(Integer, nullable=False)
     created = Column(DateTime, nullable=False)
     media = Column(String(64))
@@ -33,7 +33,7 @@ class Brag(Base):
 class Category(Base):
     __tablename__ = 'category'
 
-    id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('category_id_seq'::regclass)"))
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     name = Column(String(64), nullable=False)
     type = Column(String(1), nullable=False)
 
@@ -43,17 +43,25 @@ class Client(Base):
 
     name = Column(String(40), server_default=text("NULL::character varying"))
     userid = Column(Integer, nullable=False)
-    id = Column(String(50), primary_key=True, unique=True)
+    client_id = Column(String(50), primary_key=True, unique=True)
     secret = Column(String(64), nullable=False, unique=True)
     confidential = Column(Boolean, nullable=False, server_default=text("true"))
     _redirect_uris = Column(Text)
     _default_scopes = Column(Text)
 
 
+class Code(Base):
+    __tablename__ = 'code'
+
+    six_digits = Column(String(6), primary_key=True)
+    expires = Column(DateTime)
+    userid = Column(Integer, nullable=False, unique=True)
+
+
 class Connection(Base):
     __tablename__ = 'connection'
 
-    id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('connection_id_seq'::regclass)"))
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     userid1 = Column(Integer, nullable=False)
     userid2 = Column(Integer, nullable=False)
     status = Column(String(1))
@@ -63,7 +71,7 @@ class Connection(Base):
 class Gameplan(Base):
     __tablename__ = 'gameplan'
 
-    id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('gameplan_id_seq'::regclass)"))
+    id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     userid = Column(Integer, nullable=False)
     categoryid = Column(Integer, nullable=False)
     body = Column(String(512), nullable=False)
@@ -76,12 +84,12 @@ class Grant(Base):
     __tablename__ = 'grant'
 
     id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('grant_id_seq'::regclass)"))
-    userid = Column(Integer, nullable=False)
-    clientid = Column(String(50), nullable=False)
+    user = Column(Integer, nullable=False)
+    client_id = Column(String(50), nullable=False)
     code = Column(String(255), nullable=False)
     redirect_uri = Column(String(255))
     expires = Column(DateTime)
-    scopes = Column(Text)
+    _scopes = Column(Text)
 
 
 class Rating(Base):
@@ -106,13 +114,13 @@ class Token(Base):
     __tablename__ = 'token'
 
     id = Column(Integer, primary_key=True, unique=True, server_default=text("nextval('token_id_seq'::regclass)"))
-    clientid = Column(String(50), nullable=False)
-    userid = Column(Integer)
+    client_id = Column(String(50), nullable=False)
+    user = Column(Integer)
     token_type = Column(String(40))
-    accesstoken = Column(String(255), unique=True)
-    refreshtoken = Column(String(255), unique=True)
+    access_token = Column(String(255), unique=True)
+    refresh_token = Column(String(255), unique=True)
     expires = Column(DateTime)
-    scopes = Column(Text)
+    _scopes = Column(Text)
 
 
 class User(Base):
@@ -135,6 +143,6 @@ class User(Base):
 class Validator(Base):
     __tablename__ = 'validator'
 
-    id = Column(Integer, primary_key=True, unique=True)
-    validator = Column(String(32), nullable=False, unique=True, server_default=text("now()"))
-    date = Column(DateTime, nullable=False, server_default=text("now()"))
+    userid = Column(Integer, nullable=False)
+    validator = Column(String(256), primary_key=True, unique=True)
+    expires = Column(DateTime, nullable=False)
