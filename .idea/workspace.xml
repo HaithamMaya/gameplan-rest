@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flaskr_tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/routes.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modelsRaw.py" afterPath="$PROJECT_DIR$/modelsRaw.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py" afterPath="$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +14,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/gameplan-rest$gameplan_rest.coverage" NAME="gameplan-rest Coverage Results" MODIFIED="1483372725791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_app/flask_app" />
-    <SUITE FILE_PATH="coverage/gameplan-rest$Unnamed.coverage" NAME="Tests Coverage Results" MODIFIED="1483373090366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan-rest$gameplan_rest.coverage" NAME="gameplan-rest Coverage Results" MODIFIED="1483404106415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_app/flask_app" />
+    <SUITE FILE_PATH="coverage/gameplan-rest$Unnamed.coverage" NAME="Tests Coverage Results" MODIFIED="1483404154442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -57,18 +55,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="92" column="18" lean-forward="false" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+            <state relative-caret-position="344">
+              <caret line="270" column="0" lean-forward="true" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
                 <element signature="e#878#2357#1" expanded="false" />
                 <element signature="e#2525#4636#1" expanded="false" />
-                <element signature="e#5660#7834#1" expanded="false" />
-                <element signature="e#8597#9256#1" expanded="false" />
-                <element signature="e#9521#10341#1" expanded="false" />
+                <element signature="e#5660#7019#1" expanded="false" />
+                <element signature="e#7782#8441#1" expanded="false" />
+                <element signature="e#8706#9526#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -112,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flaskr_tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flaskr_tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+            <state relative-caret-position="387">
+              <caret line="43" column="87" lean-forward="false" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -754,38 +752,45 @@
       <option name="project" value="LOCAL" />
       <updated>1483295260437</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="initial tests added.">
+      <created>1483373155000</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1483373155000</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Tests - 2017.01.02 at 10h 45m 14s.xml">
+    <history-entry file="Tests - 2017.01.02 at 18h 26m 16s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 49m 19s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 14m 19s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 49m 28s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 14m 41s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 49m 59s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 15m 15s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 52m 09s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 17m 48s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 52m 59s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 21m 10s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 10h 58m 42s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 21m 17s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 11h 00m 27s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 41m 53s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 11h 04m 21s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 42m 03s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
-    <history-entry file="Tests - 2017.01.02 at 11h 04m 52s.xml">
+    <history-entry file="Tests - 2017.01.02 at 19h 42m 36s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
   </component>
@@ -798,11 +803,11 @@
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2778489" sideWeight="0.70672387" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2765685" sideWeight="0.70672387" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.37056738" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.37876105" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13519314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.6294326" order="4" side_tool="false" content_ui="tabs" x="587" y="57" width="265" height="804" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14949928" sideWeight="0.62123895" order="4" side_tool="false" content_ui="tabs" x="587" y="57" width="265" height="804" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39820743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -844,7 +849,8 @@
     <MESSAGE value="checking password fix and updating documentation" />
     <MESSAGE value="revoke token isn't working. request.client is None in oauthlib/oauth2.py file so client_id cannot be compared to tok.client_id" />
     <MESSAGE value="small fixes in swagger docs and verification code authentication." />
-    <option name="LAST_COMMIT_MESSAGE" value="small fixes in swagger docs and verification code authentication." />
+    <MESSAGE value="initial tests added." />
+    <option name="LAST_COMMIT_MESSAGE" value="initial tests added." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -939,6 +945,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1842">
           <caret line="147" column="14" lean-forward="true" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,6 +1022,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="188" column="0" lean-forward="false" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,18 +1037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
           <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.users">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1255,27 +1251,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="92" column="18" lean-forward="false" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-            <element signature="e#878#2357#1" expanded="false" />
-            <element signature="e#2525#4636#1" expanded="false" />
-            <element signature="e#5660#7834#1" expanded="false" />
-            <element signature="e#8597#9256#1" expanded="false" />
-            <element signature="e#9521#10341#1" expanded="false" />
-          </folding>
+    <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.users">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+        <state relative-caret-position="387">
+          <caret line="43" column="87" lean-forward="false" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="270" column="0" lean-forward="true" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+            <element signature="e#878#2357#1" expanded="false" />
+            <element signature="e#2525#4636#1" expanded="false" />
+            <element signature="e#5660#7019#1" expanded="false" />
+            <element signature="e#7782#8441#1" expanded="false" />
+            <element signature="e#8706#9526#1" expanded="false" />
           </folding>
         </state>
       </provider>

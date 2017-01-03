@@ -206,9 +206,14 @@ def updateUser(id):
     tags:
       - Users
     parameters:
-      - id: user id
-        description: user object
+      - name: id
+        description: user id
+        in: path
+        type: int
+        required: true
+      - name: fields
         in: body
+        description: any combination of first, last, username, email, password, addressid
         schema:
           id: PostUser
           properties:
@@ -221,15 +226,15 @@ def updateUser(id):
             email:
               type: string
               description: email address
-            role:
-              type: string
-              description: user role (scope)
-            schoolid:
-              type: integer
-              description: school id
             addressid:
               type: integer
               description: address id
+            password:
+              type: string
+              description: password
+            username:
+              type: string
+              description: username
       - name: access_token
         description: oauth access token
         in: query
@@ -237,45 +242,13 @@ def updateUser(id):
         required: true
     responses:
       '200':
-        description: Returns User information
+        description: Returns fields that were updated
         schema:
-          id: GetUser
+          id: Updated
           properties:
             updated:
               type: string
-              description: fields updated
-            id:
-              type: integer
-              description: user id
-            first:
-              type: string
-              description: first name
-            last:
-              type: string
-              description: last name
-            username:
-              type: string
-              description: username
-            email:
-              type: string
-              description: email address
-            role:
-              type: string
-              description: user role (scope)
-            schoolid:
-              type: integer
-              description: school id
-            addressid:
-              type: integer
-              description: address id
-            created:
-              type: string
-              format: date-time
-              description: time user added to database and sent welcome email
-            joined:
-              type: string
-              format: date-time
-              description: time user created username and password
+              description: array of fields updated
       '401':
         description: Unauthorized
     """
