@@ -253,21 +253,38 @@ def updateUser(id):
         description: Unauthorized
     """
     r = []
+    args = Users.reqUpdate().parse_args(strict=False)
     user = db.session.query(Users).get(id)
     if user is None:
         return jsonify(Error='Invalid user ID')
-    if request.form.get('password') is not None:
-        password = request.form.get('password')
+    if args['password'] is not None:
+        password = args['password']
         h = generate_password_hash(password + user.role, ENCRYPTION_METHOD, 8).split('$')
         user.salt = h[1]
         user.hash = h[2]
         r.append('password')
-    if request.form.get('first') is not None:
-        user.first = request.form.get('first')
+    if args['first'] is not None:
+        user.first = args['first']
         r.append('first')
-    if request.form.get('last') is not None:
-        user.first = request.form.get('last')
+    if args['last'] is not None:
+        user.first = args['last']
         r.append('last')
+    if args['email'] is not None:
+        user.first = args['email']
+        r.append('email')
+    if args['username'] is not None:
+        user.first = args['username']
+        r.append('username')
+    if args['schoolid'] is not None:
+        user.first = args['schoolid']
+        r.append('schoolid')
+    if args['addressid'] is not None:
+        user.first = args['addressid']
+        r.append('addressid')
+    if args['role'] is not None:
+        user.first = args['role']
+        r.append('role')
+
 
     db.session.commit()
     return jsonify(updated=r)

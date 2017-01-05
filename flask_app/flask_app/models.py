@@ -276,7 +276,6 @@ class Users(Base):
         userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
         userParser.add_argument('schoolid', type=int, help='School ID required')
         userParser.add_argument('addressid', type=int, help='Address ID required')
-        userParser.add_argument('access_token', type=str, help='Access Token required')
         return userParser
 
     @staticmethod
@@ -285,6 +284,13 @@ class Users(Base):
         loginParser.add_argument('username', type=str, help='username required')
         loginParser.add_argument('password', type=str, help='password required')
         return loginParser
+
+    @staticmethod
+    def reqUpdate():
+        updateParser = Users.req()
+        updateParser.add_argument('password', type=str, help='Password')
+        updateParser.add_argument('username', type=str, help='Username')
+        return updateParser
 
 
 class Validators(Base):
