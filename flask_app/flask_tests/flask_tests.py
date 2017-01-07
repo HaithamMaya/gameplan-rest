@@ -1,6 +1,5 @@
-import sys
-sys.path.insert(0, '../.')
 import os
+print(os.getcwd())
 from flask_app.__init__ import *
 import unittest
 import tempfile

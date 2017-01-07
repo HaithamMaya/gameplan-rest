@@ -375,6 +375,11 @@ def validatorRequestCheck(v, email):
     return validator
 
 def sendCode(v, email):
+    existing = db.session.query(Codes).filter_by(userid=v.userid)
+    if type(existing) is Codes:
+        db.session.delete(existing)
+        db.session.commit()
+
     user = db.session.query(Users).get(v.userid)
     expires = datetime.utcnow() + timedelta(minutes=CODE_DURATION_MINUTES)
     code = Codes(randomString(6, '1234567890'), expires, v.userid)
@@ -400,4 +405,4 @@ def validatorInvalid(v, email):
     elif validator.expires < datetime.utcnow():
         return {'Error': 'Expired'}
     else:
-        return validators
+        return validator

@@ -276,6 +276,7 @@ class Users(Base):
         userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
         userParser.add_argument('schoolid', type=int, help='School ID required')
         userParser.add_argument('addressid', type=int, help='Address ID required')
+        userParser.add_argument('access_token', type=str, help='Oauth token')
         return userParser
 
     @staticmethod
