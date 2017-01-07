@@ -1,5 +1,7 @@
+import sys
+sys.path.insert(0, '../.')
 import os
-from flask_app import *
+from flask_app.__init__ import *
 import unittest
 import tempfile
 
