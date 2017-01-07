@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, 'flask_app/flask_tests')
 import os
 from flask_app.__init__ import *
 import unittest
