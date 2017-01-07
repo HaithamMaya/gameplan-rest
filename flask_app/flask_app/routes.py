@@ -267,22 +267,22 @@ def updateUser(id):
         user.first = args['first']
         r.append('first')
     if args['last'] is not None:
-        user.first = args['last']
+        user.last = args['last']
         r.append('last')
     if args['email'] is not None:
-        user.first = args['email']
+        user.email = args['email']
         r.append('email')
     if args['username'] is not None:
-        user.first = args['username']
+        user.username = args['username']
         r.append('username')
     if args['schoolid'] is not None:
-        user.first = args['schoolid']
+        user.schoolid = args['schoolid']
         r.append('schoolid')
     if args['addressid'] is not None:
-        user.first = args['addressid']
+        user.addressid = args['addressid']
         r.append('addressid')
     if args['role'] is not None:
-        user.first = args['role']
+        user.role = args['role']
         r.append('role')
 
 

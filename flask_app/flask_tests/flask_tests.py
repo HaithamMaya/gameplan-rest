@@ -3,7 +3,7 @@ from flask_app.__init__ import *
 import unittest
 import tempfile
 
-class FlaskrTestCase(unittest.TestCase):
+class FlaskTestCase(unittest.TestCase):
 
     def setUp(self):
         self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
