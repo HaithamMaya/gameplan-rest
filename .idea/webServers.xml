@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="af127149-af49-4d41-bad7-1267d2972437" name="aws-ec2" url="http://ec2-54-160-178-89.compute-1.amazonaws.com">
-        <fileTransfer host="ec2-54-160-178-89.compute-1.amazonaws.com" port="22" privateKey="$USER_HOME$/Downloads/ec2-late-november.pem" rootFolder="/var/www/html" accessType="SFTP" keyPair="true">
+        <fileTransfer host="ec2-54-160-178-89.compute-1.amazonaws.com" port="22" privateKey="$USER_HOME$/Downloads/ec2-late-november.pem" rootFolder="/var/www/html/gameplan-rest" accessType="SFTP" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

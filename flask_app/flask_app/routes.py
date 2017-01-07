@@ -400,4 +400,4 @@ def validatorInvalid(v, email):
     elif validator.expires < datetime.utcnow():
         return {'Error': 'Expired'}
     else:
-        return validator
+        return validators
