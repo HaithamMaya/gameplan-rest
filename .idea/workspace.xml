@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="testing travis">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_mail.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_security.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_swagger.py" />
+    <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" afterPath="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -105,6 +99,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="45">
+                <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -115,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            <state relative-caret-position="360">
+              <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -222,7 +229,6 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/config/config_mail.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/templates/verify.html" />
         <option value="/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/flask_oauthlib/provider/oauth2.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
         <option value="$PROJECT_DIR$/modelsRaw.py" />
@@ -238,6 +244,7 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_mail.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_security.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -872,7 +879,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483819438328</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added config files for travis">
+      <created>1483929281511</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1483929281511</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -967,7 +981,8 @@
     <MESSAGE value="fixed update user route and added user update request parser" />
     <MESSAGE value="added Travis CI support (repo not enabled on Travis yet tho)" />
     <MESSAGE value="testing travis" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing travis" />
+    <MESSAGE value="added config files for travis" />
+    <option name="LAST_COMMIT_MESSAGE" value="added config files for travis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -983,13 +998,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/templates/welcome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="71" column="111" lean-forward="false" selection-start-line="71" selection-start-column="111" selection-end-line="71" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/templates/verify.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
@@ -1167,17 +1175,6 @@
         <state relative-caret-position="214">
           <caret line="437" column="8" lean-forward="false" selection-start-line="437" selection-start-column="8" selection-end-line="437" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="10" column="78" lean-forward="true" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1364,26 +1361,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py">
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_db.py">
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_swagger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_mail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1396,21 +1387,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_swagger.py">
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        <state relative-caret-position="360">
+          <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
