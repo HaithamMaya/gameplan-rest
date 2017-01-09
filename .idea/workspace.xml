@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,7 +65,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -74,6 +74,16 @@
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,7 +178,6 @@
         <option value="$PROJECT_DIR$/flask_app/flaskr_tests/flaskr_tests.py" />
         <option value="$PROJECT_DIR$/flask_app/requirements.txt" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/flaskapp.wsgi" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/config_db.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_mail.py" />
@@ -179,6 +188,7 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -797,7 +807,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483975553348</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="added travis build status">
+      <created>1483975621316</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1483975621316</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -871,7 +888,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GET /user-&lt;id&gt; returns user json" />
     <MESSAGE value="Add new user with POST /add" />
     <MESSAGE value="Updated README" />
     <MESSAGE value="added OAuth2 tables/classes Client, Grant, and Token to DB and models" />
@@ -896,7 +912,8 @@
     <MESSAGE value="added Travis Build Status" />
     <MESSAGE value="got localhost db working" />
     <MESSAGE value="testing travis with local postgres db" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing travis with local postgres db" />
+    <MESSAGE value="added travis build status" />
+    <option name="LAST_COMMIT_MESSAGE" value="added travis build status" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1126,14 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1310,6 +1319,14 @@
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
