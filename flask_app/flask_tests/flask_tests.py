@@ -9,7 +9,6 @@ class FlaskTestCase(unittest.TestCase):
 
     def setUp(self):
         self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
-        app.config['TESTING'] = True
         self.app = app.test_client()
         self.token = 'access_token=JM0VKiGtHifM4oeNLeuUvuzDwOwNYy'
 

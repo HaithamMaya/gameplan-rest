@@ -1,11 +1,12 @@
+services:
+- postgresql
 language: python
 python:
   - "3.5"
-#  - "3.5-dev" # 3.5 development branch
-#  - "3.6-dev" # 3.6 development branch
-#  - "nightly" # currently points to 3.7-dev
-# command to install dependencies
+env:
+- FLASK=0.11.1 DB=postgres
 install: "pip3 install -r requirements.txt"
-# command to run tests
+before_script:
+  - psql -c 'create database test;' -U postgres
 script:
   - python flask_app/flask_tests/flask_tests.py
