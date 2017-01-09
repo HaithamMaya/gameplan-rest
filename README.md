@@ -1,5 +1,4 @@
-# gameplan-rest
-[![Build Status](https://travis-ci.com/hmaya1/gameplan-rest.svg?token=tzVy2xkvpXAr6ksz4g41&branch=master)](https://travis-ci.com/hmaya1/gameplan-rest)
+# gameplan-rest   [![Build Status](https://travis-ci.com/hmaya1/gameplan-rest.svg?token=tzVy2xkvpXAr6ksz4g41&branch=master)](https://travis-ci.com/hmaya1/gameplan-rest)    
 http://api.mygameplan.io/   
 or  
 http://127.0.0.1:5000/  (local)  
