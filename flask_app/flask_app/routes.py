@@ -1,5 +1,5 @@
 from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
-from flask_app.models import Users, Validators, Codes, Schools
+from flask_app.models import Users, Validators, Codes, Schools, Base
 from flask_app.oauth2 import randomString
 from flask import redirect, request, render_template, jsonify
 from flask_mail import Mail, Message

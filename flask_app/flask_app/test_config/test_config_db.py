@@ -1,2 +1,2 @@
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI='postgresql://localhost/test'
+SQLALCHEMY_DATABASE_URI='postgresql://localhost'

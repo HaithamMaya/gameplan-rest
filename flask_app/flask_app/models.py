@@ -5,7 +5,6 @@ from flask_restplus import reqparse
 from flask import jsonify
 
 Base = declarative_base()
-metadata = Base.metadata
 
 
 class Addresses(Base):
@@ -231,7 +230,7 @@ class Users(Base):
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
     first = Column(String(64), nullable=False)
     last = Column(String(64), nullable=False)
-    username = Column(String(100), unique=True)
+    username = Column(String(100))
     email = Column(String(120), nullable=False, unique=True)
     role = Column(String(1), nullable=False)
     schoolid = Column(Integer, nullable=False)

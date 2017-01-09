@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-if 'TRAVIS' not in os.environ:
+if False:
     app.config['DEBUG'] = True
     app.config['TESTING'] = False
     app.config.from_pyfile('config/config_db.py')
@@ -14,6 +14,7 @@ if 'TRAVIS' not in os.environ:
     app.config.from_pyfile('config/config_mail.py')
     app.config.from_pyfile('config/config_swagger.py')
 else:
+    app.config['DEBUG'] = True
     app.config['TESTING'] = True
     app.config.from_pyfile('test_config/test_config_db.py')
     app.config.from_pyfile('test_config/test_config_security.py')
