@@ -10,7 +10,7 @@ http://127.0.0.1:5000/  (local)
 2. User clicks link in email and is prompted to send a code to their email `email=jdoe` to verify their email address
     * GET request returns `"userid": 1`
 3. User clicks some sort of "Send Code" button and a POST is sent to `/validate/h2349dfnAFh23nn&email=jdoe`
-    * After "Senc Code" pressed, an input appears prompting user to check email
+    * After "Send Code" pressed, an input appears prompting user to check email
     * User is emailed a 6-digit code `348023`
     * Code is only valid for 30 mins (can be changed to +/-)
 4. User copies and pastes code into input (in <30 mins) and a POST is sent to `/oauth/authorize?client_id=<CLIENT>&redirect_uri=<REDIRECT>&scope=N&response_type=code` 

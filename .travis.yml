@@ -1,22 +1,19 @@
 notifications:
-  slack: mygameplan:uKu2ntWtoq9zjqu8hOI33se3
-  email: False
-#    recipients:
-#      - one@example.com
-#    on_success: never
-#    on_failure: always
+  slack:
+    secure: 2tWKqgo9rRp0k4Z56xdWVR4EKpMHh96Xfs6P6BqptlgFoPrEVrkJUzTX4zvKj9QL1uLKt723HtZHmcLlD2OxXnaRcJ5zwxmq20CVaYhai3gON4nH+8+sjEnfHS9bGenlAohrSy3CyJAC9XOzeJRnzhYgu5VrJTDyafCnHPQwAQC68GxyGnX6CzjA66KF7Puc+B6EhNoMSzCQCXd+ehUj5c9kfaYwZ6jsTgXfTbBvzjH3FhYprSWVXa780R/a5pZ20nsZgxYq6bswd7bQuZMbNTHJHyaMrQm0yEGL2+L1SDpr3Z6/enoIHGo+5K/MmhbyeZ/byHIvxlswpYZLGkp6HYM5MO1SLuugGaHWJ5x0CVfZYFHCgEQCqHaVAOEDmI3KouABB66/40IHu6np7umzSOVgW7L2q3vE9TO1Qcps6bKtiKQBW8bcI4514D86vLyCDUzU1SKDsSA/OvpfysCfiKV0Lie4GI9XNfu74Ts0KWGonHEBSaP6lUiuqJJnL6dsuV5b6WF+Ux7zzE2umSxANeb5J2jwIqz/aTgSrlHT7Z/VIi2l4UBxkaYhgJ5SdEYP1myV7PE/uwgFm0T+Do6U+crCbdKpOd5sQVvg4FL/lqY/iGJk7rVjhT8TyyonbsoET6zGIEFPm9FFVGlEf1usHDHdq1ItWXBcNyV0a2JgTpQ=
+  email: false
 cache:
   directories:
-    - ~/virtualenv/python3.5/
+  - ~/virtualenv/python3.5/
 services:
 - postgresql
 language: python
 python:
-  - "3.5"
+- '3.5'
 env:
 - FLASK=0.11.1 DB=postgres
-install: "pip3 install -r requirements.txt"
+install: pip3 install -r requirements.txt
 before_script:
-  - psql -c 'create database cashc;' -U postgres
+- psql -c 'create database cashc;' -U postgres
 script:
-  - python flask_app/flask_tests/flask_tests.py
+- python flask_app/flask_tests/flask_tests.py
