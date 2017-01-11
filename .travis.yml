@@ -1,4 +1,5 @@
 notifications:
+  slack: mygameplan:uKu2ntWtoq9zjqu8hOI33se3
   email: False
 #    recipients:
 #      - one@example.com

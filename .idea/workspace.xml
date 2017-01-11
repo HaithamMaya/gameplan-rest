@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -85,7 +85,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -94,6 +94,16 @@
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -246,13 +256,13 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_security.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_db.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/models.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -927,7 +937,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484173389334</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="added New User flow and some OAuth tips to README">
+      <created>1484175338447</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1484175338447</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1001,7 +1018,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modified wsgi, everything functioning on ec2 server" />
     <MESSAGE value="fixed oauth password grant_type query" />
     <MESSAGE value="welcome email-&gt;send code-&gt;enter code-&gt;user verified and OAuth access token received" />
     <MESSAGE value="documenting swagger and added verification code request parser" />
@@ -1026,7 +1042,8 @@
     <MESSAGE value="config for tests and prod/dev separated by getting current working directory" />
     <MESSAGE value="got /oauth/authorize test working" />
     <MESSAGE value="got /oauth/token test working with authorization_code" />
-    <option name="LAST_COMMIT_MESSAGE" value="got /oauth/token test working with authorization_code" />
+    <MESSAGE value="added New User flow and some OAuth tips to README" />
+    <option name="LAST_COMMIT_MESSAGE" value="added New User flow and some OAuth tips to README" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1300,14 +1317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.client">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1480,6 +1489,14 @@
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
