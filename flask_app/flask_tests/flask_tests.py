@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(0, './flask_app')
 from flask_app.__init__ import *
-from flask_app.models import Base
+from flask_app.models import *
 import unittest
 
 class FlaskTestCase(unittest.TestCase):
@@ -10,9 +10,15 @@ class FlaskTestCase(unittest.TestCase):
         self.app = app.test_client()
         Base.metadata.create_all(db.get_engine(app))
 
-        if db.session.query(Users).get(1) is None:
-            user = Users(None, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 1, 1, None, None)
-            db.session.add(user)
+        if db.session.query(Client).get(1) is None:
+            self.client = Client('abc123', 'secret', 'Test Client', 1, False, 'http://api.mygameplan.io/authorized', 'A S T P N')
+            db.session.add(self.client)
+            self.user = Users(None, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 1, 1, None, None)
+            db.session.add(self.user)
+            self.address = Addresses(None, '123 Main St', '#101', 'Detroit', 'MI', '48226')
+            db.session.add(self.address)
+            self.school = Schools(None, 'Detroit High', 1, 1)
+            db.session.add(self.school)
             db.session.commit()
 
 
@@ -23,10 +29,11 @@ class FlaskTestCase(unittest.TestCase):
         rv = self.app.get('/user/1')
         assert b'Unauthorized' in rv.data
 
-    # def test_authorized(self):
-    #     rv = self.app.get('/user/1?{0}'.format(self.token))
-    #     assert not b'Unauthorized' in rv.data
-    #
+    def test_authorized(self):
+
+        rv = self.app.get('/user/1?{0}'.format(self.token))
+        assert not b'Unauthorized' in rv.data
+
     # def test_get_user(self):
     #     rv = self.app.get('/user/1?{0}'.format(self.token))
     #     assert b'"addressid": 1' in rv.data

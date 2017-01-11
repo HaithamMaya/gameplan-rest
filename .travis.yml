@@ -1,3 +1,12 @@
+notifications:
+  email: False
+#    recipients:
+#      - one@example.com
+#    on_success: never
+#    on_failure: always
+cache:
+  directories:
+    - ~/virtualenv/python3.5/
 services:
 - postgresql
 language: python

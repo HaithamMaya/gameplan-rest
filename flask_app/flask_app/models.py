@@ -17,6 +17,14 @@ class Addresses(Base):
     state = Column(String(2), nullable=False)
     zip = Column(String(5), nullable=False)
 
+    def __init__(self, id, line1, line2, city, state, zip):
+        self.id = id
+        self.line1 = line1
+        self.line2 = line2
+        self.city = city
+        self.state = state
+        self.zip = zip
+
 
 class Brags(Base):
     __tablename__ = 'brag'
@@ -183,11 +191,11 @@ class Schools(Base):
     adminid = Column(Integer, nullable=False)
     addressid = Column(Integer, nullable=False)
 
-    # def __init__(self, id, name, adminid, addressid):
-    #     self.id = id
-    #     self.name = name
-    #     self.adminid = adminid
-    #     self.addressid = addressid
+    def __init__(self, id, name, adminid, addressid):
+        self.id = id
+        self.name = name
+        self.adminid = adminid
+        self.addressid = addressid
 
 
 class Token(Base):
@@ -275,7 +283,6 @@ class Users(Base):
         userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
         userParser.add_argument('schoolid', type=int, help='School ID required')
         userParser.add_argument('addressid', type=int, help='Address ID required')
-        userParser.add_argument('access_token', type=str, help='Oauth token')
         return userParser
 
     @staticmethod

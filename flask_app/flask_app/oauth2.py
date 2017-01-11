@@ -11,73 +11,6 @@ import pprint
 SIMPLE_CHARS = string.ascii_letters + string.digits
 
 
-@app.route('/client', methods=['POST'])
-def client():
-    """
-    New client
-    Adds a new client and returns id and secret
-    ---
-    tags:
-      - OAuth
-    parameters:
-      - name: verification
-        description: verification code and user id
-        in: body
-        schema:
-          id: Verify
-          properties:
-            code:
-              type: string
-              description: six-digit code
-            userid:
-              type: integer
-              description: user id
-    responses:
-      '200':
-        description: Client
-        schema:
-          id: Client
-          properties:
-            client_id:
-              type: string
-              description: client id
-            client_secret:
-              type: string
-              description: client secret
-      '401':
-        description: Unauthorized
-    """
-    args = Codes.req().parse_args(strict=True)
-    six_digits = args.get('code')
-    if six_digits is None:
-        return jsonify(Error='No Code')
-    userid = args.get('userid')
-    if userid is None:
-        return jsonify(Error='No User ID')
-    code = checkCode(six_digits, userid)
-    if type(code) is not Codes:
-        return jsonify(code)
-
-    user = db.session.query(Users).get(userid)
-    if request.user_agent.platform:
-        client_name = request.user_agent.platform + " " + request.user_agent.browser
-    else:
-        client_name = 'NONE'
-    item = Client(gen_salt(40), gen_salt(50), client_name, userid, False,
-                  ' '.join([
-                      HOME_URL + '/authorized',
-                      'http://127.0.0.1:5000/authorized',
-                  ]), user.role
-                  )
-    db.session.add(item)
-    db.session.commit()
-
-    return jsonify(
-        client_id=item.client_id,
-        client_secret=item.secret,
-    )
-
-
 @app.route('/oauth/authorize', methods=['POST'])
 @oauth.authorize_handler
 def authorize(*args, **kwargs):
@@ -104,12 +37,49 @@ def authorize(*args, **kwargs):
         in: query
         type: string
         required: true
+      - name: verification
+        description: verification code and user id
+        in: body
+        schema:
+          id: Verify
+          properties:
+            code:
+              type: string
+              description: six-digit code
+            userid:
+              type: integer
+              description: user id
     responses:
       '200':
         description: Redirects to /authorized
       '401':
         description: Unauthorized
     """
+    args = Codes.req().parse_args(strict=False)
+    six_digits = args.get('code')
+    if six_digits is None:
+        return jsonify(Error='No Code')
+    userid = args.get('userid')
+    if userid is None:
+        return jsonify(Error='No User ID')
+    code = checkCode(six_digits, userid)
+    if type(code) is not Codes:
+        return jsonify(code)
+
+    user = db.session.query(Users).get(userid)
+    if request.user_agent.platform:
+        client_name = request.user_agent.platform + " " + request.user_agent.browser
+    else:
+        client_name = 'NONE'
+    item = Client(gen_salt(40), gen_salt(50), client_name, userid, False,
+                  ' '.join([
+                      HOME_URL + '/authorized',
+                      'http://127.0.0.1:5000/authorized',
+                  ]), user.role
+                  )
+    db.session.add(item)
+    db.session.commit()
+
     return True
 
 
@@ -356,9 +326,8 @@ def randomHash(length=32):
 
 def checkCode(c, userid):
     code = db.session.query(Codes).get(c)
-    print(c)
     if code is None:
-        return {'Error': 'Code not found'}
+        return {'Error': 'Invalid code'}
     elif datetime.utcnow() > code.expires:
         return {'Error': 'Expired'}
     elif code.userid != userid:

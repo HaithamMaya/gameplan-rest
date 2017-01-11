@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-if False:
+if True:
     app.config['DEBUG'] = True
     app.config['TESTING'] = False
     app.config.from_pyfile('config/config_db.py')
