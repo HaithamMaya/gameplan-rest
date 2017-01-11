@@ -10,7 +10,7 @@ class FlaskTestCase(unittest.TestCase):
         self.app = app.test_client()
         Base.metadata.create_all(db.get_engine(app))
 
-        if db.session.query(Client).get(1) is None:
+        if db.session.query(Users).get(1) is None:
             self.client = Client('abc123', 'secret', 'Test Client', 1, False, 'http://api.mygameplan.io/authorized', 'A S T P N')
             db.session.add(self.client)
             self.user = Users(None, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 1, 1, None, None)

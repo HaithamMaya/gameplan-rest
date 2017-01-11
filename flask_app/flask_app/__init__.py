@@ -6,7 +6,9 @@ import os
 
 app = Flask(__name__)
 
-if True:
+script = os.getcwd().split('/')[-1]
+
+if script == 'flask_app':
     app.config['DEBUG'] = True
     app.config['TESTING'] = False
     app.config.from_pyfile('config/config_db.py')

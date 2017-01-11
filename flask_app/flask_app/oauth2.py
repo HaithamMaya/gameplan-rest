@@ -63,24 +63,10 @@ def authorize(*args, **kwargs):
     if userid is None:
         return jsonify(Error='No User ID')
     code = checkCode(six_digits, userid)
-    if type(code) is not Codes:
-        return jsonify(code)
-
-    user = db.session.query(Users).get(userid)
-    if request.user_agent.platform:
-        client_name = request.user_agent.platform + " " + request.user_agent.browser
+    if type(code) is Codes:
+        return True
     else:
-        client_name = 'NONE'
-    item = Client(gen_salt(40), gen_salt(50), client_name, userid, False,
-                  ' '.join([
-                      HOME_URL + '/authorized',
-                      'http://127.0.0.1:5000/authorized',
-                  ]), user.role
-                  )
-    db.session.add(item)
-    db.session.commit()
-
-    return True
+        return jsonify(code)
 
 
 @app.route('/authorized', methods=['GET'])
