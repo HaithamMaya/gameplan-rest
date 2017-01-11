@@ -1,10 +1,10 @@
+import unittest
 import sys
 import time
+import re
 sys.path.insert(0, './flask_app')
 from flask_app.__init__ import *
 from flask_app.models import *
-from flask import g
-import unittest
 
 class FlaskTestCase(unittest.TestCase):
 
@@ -17,9 +17,10 @@ class FlaskTestCase(unittest.TestCase):
         self.__class__.client = Client('id', 'secret', 'Test Client', 1, False,
                                        'http://api.mygameplan.io/authorized http://127.0.0.1:5000/authorized', 'A S T P N')
         self.__class__.user = Users(1, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 1, 1, None, None)
-        self.__class__.address = Addresses(None, '123 Main St', '#101', 'Detroit', 'MI', '48226')
-        self.__class__.school = Schools(None, 'Detroit High', 1, 1)
+        self.__class__.address = Addresses(1, '123 Main St', '#101', 'Detroit', 'MI', '48226')
+        self.__class__.school = Schools(1, 'Detroit High', 1, 1)
         self.__class__.code = Codes('123456', datetime.utcnow() + timedelta(days=30), 1)
+        self.__class__.token = Token(0,'id',1,'Bearer','acc','ref',datetime.utcnow() + timedelta(days=30),'A S T P N')
 
         if db.session.query(Users).get(1) is None:
             db.session.add(self.__class__.client)
@@ -27,61 +28,87 @@ class FlaskTestCase(unittest.TestCase):
             db.session.add(self.__class__.address)
             db.session.add(self.__class__.school)
             db.session.add(self.__class__.code)
+            db.session.add(self.__class__.token)
             db.session.commit()
 
 
     def tearDown(self):
         pass
-        #Base.metadata.drop_all(db.get_engine(app))
+        Base.metadata.drop_all(db.get_engine(app))
 
 
     def test_unauthorized(self):
         rv = self.app.get('/user/1')
-        assert b'Unauthorized' in rv.data
+        self.assertIn('Unauthorized', str(rv.data))
 
+    '''
+    Get authorization code from grant.
+    Code will be used later to get token using authorization_code grant type.
+    '''
     def test_oauth_authorize(self):
-        redirect = 'redirect_uri=http://127.0.0.1:5000/authorized'
+        redirect_uri = 'redirect_uri=http://127.0.0.1:5000/authorized'
         scope = 'scope=A'
         response = 'response_type=code'
 
-        rv = self.app.post('/oauth/authorize?client_id={0}&{1}&{2}&{3}'.format(self.__class__.client.client_id, redirect, scope, response),
-                           data=dict(code=self.__class__.code.six_digits, userid=self.__class__.user.id))
+        rv = self.app.post('/oauth/authorize?client_id={0}&{1}&{2}&{3}'.format(self.__class__.client.client_id,
+            redirect_uri, scope, response),data=dict(code=self.__class__.code.six_digits, userid=self.__class__.user.id))
 
         self.assertNotIn('error', rv.location)
-        self.assertIn('code', rv.location)
+        self.assertIn('code', str(rv.location))
+
+    '''
+    Get access_token, refresh_token, expires_in...
+    Use authorization_code grant type.
+    '''
+    def test_oauth_token_authorization_code(self):
+        db.session.add(self.__class__.code)
+        redirect_uri = 'redirect_uri=http://127.0.0.1:5000/authorized'
+        scope = 'scope=A'
+        response = 'response_type=code'
+        type = 'grant_type=authorization_code'
+
+        rv_auth = self.app.post('/oauth/authorize?client_id={0}&{1}&{2}&{3}'.format(self.__class__.client.client_id,
+                                                                               redirect_uri, scope, response),
+                           data=dict(code=self.__class__.code.six_digits, userid=self.__class__.user.id))
+        auth_code = rv_auth.location.split('=')[-1]
+
+        rv = self.app.post('/oauth/token?{0}&client_id={1}&code={2}&{3}&{4}'.format(type,self.__class__.client.client_id,
+                                                                                    auth_code,scope,redirect_uri))
+        # rv_token = re.split(':|,',str(rv.data))
+        # pprint.pprint(rv_token)
+
+        self.assertIn('access_token', str(rv.data))
+        self.assertIn('scope', str(rv.data))
+        self.assertIn('expires_in', str(rv.data))
+        self.assertIn('token_type', str(rv.data))
+        self.assertIn('refresh_token', str(rv.data))
 
 
-    # def test_oauth_authorizeeee(self):
-    #     rv_add = self.app.post('/add'.format(), data=dict(first='Jane',last='Doe',email='janed@domain.com',
-    #                                              role='S',schoolid=1,addressid=1))
-    #     pprint.pprint(rv_add)
-    #     code = db.session.query(Codes).filter_by(userid=2).first()
-    #     rv = self.app.post('/oauth/authorize'.format(self.client.id,),
-    #                        data=dict(code=code.six_digits, userid=rv_add['id']))
+    def test_authorized(self):
+        rv = self.app.get('/user/1?access_token={0}'.format(self.__class__.token.access_token))
+        self.assertNotIn('Unauthorized', str(rv.data))
 
-    # def test_authorized(self):
-    #
-    #
-    #     rv = self.app.get('/user/1?{0}'.format(self.token))
-    #     assert not b'Unauthorized' in rv.data
+    def test_get_user(self):
+        rv = self.app.get('/user/1?access_token={0}'.format(self.__class__.token.access_token))
 
-    # def test_get_user(self):
-    #     rv = self.app.get('/user/1?{0}'.format(self.token))
-    #     assert b'"addressid": 1' in rv.data
-    #     # assert b'"created": "Sun, 06 Nov 2016 09:30:53 GMT"' in rv.data
-    #     assert b'"email": "jdoe@domain.com"' in rv.data
-    #     assert b'"first": "John"' in rv.data
-    #     assert b'"id": 1' in rv.data
-    #     #assert b'"joined": null' in rv.data
-    #     assert b'"last": "Doe"' in rv.data
-    #     assert b'"role": "S"' in rv.data
-    #     assert b'"schoolid": 1' in rv.data
-    #     assert b'"username": "jdoe"' in rv.data
+        # rv_user = re.split(':|,', str(rv.data))
+        # pprint.pprint(rv_user)
 
-    # def test_update_user(self):
-    #     rv = self.app.post('/update/1?{0}'.format(self.token), data=dict(first='John'))
-    #     assert b'updated' in rv.data
-    #     assert b'first' in rv.data
+        self.assertIn('"addressid": 1', str(rv.data))
+        self.assertIn('"email": "jdoe@domain.com"', str(rv.data))
+        self.assertIn('"first": "John"', str(rv.data))
+        self.assertIn('"id": 1', str(rv.data))
+        self.assertIn('"last": "Doe"', str(rv.data))
+        self.assertIn('"role": "S"', str(rv.data))
+        self.assertIn('"schoolid": 1', str(rv.data))
+        self.assertIn('"username": "jdoe"', str(rv.data))
+
+    def test_update_user(self):
+        rv = self.app.post('/update/1?access_token={0}'.format(self.__class__.token.access_token), data=dict(first='John'))
+        self.assertIn('updated', str(rv.data))
+        self.assertIn('first', str(rv.data))
+        # assert b'updated' in rv.data
+        # assert b'first' in rv.data
 
 if __name__ == '__main__':
     unittest.main()

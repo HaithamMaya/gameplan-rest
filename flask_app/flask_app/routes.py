@@ -187,11 +187,13 @@ def postUser():
     email = user.email.split('@')[0]
     url = HOME_URL + 'validate/' + validator.validator + '?email=' + parse.quote(email, safe='')
 
+
     msg = Message("Welcome to Gameplan")
     msg.add_recipient(user.email)
     msg.html = render_template('welcome.html', first=user.first, last=user.last,
                                school=school.name, url=url)
-    mailer.send(msg)
+    if not app.config['TESTING']:
+        mailer.send(msg)
     print('sent {0}'.format(url))
     return user.JSON()
 
@@ -387,10 +389,12 @@ def sendCode(v, email):
     db.session.commit()
     url = HOME_URL + '/validate/' + v.validator + '?email=' + email
 
+
     msg = Message("Verification Code")
     msg.add_recipient(user.email)
     msg.html = render_template('verify.html', first=user.first, code=code.six_digits, url=url)
-    mailer.send(msg)
+    if not app.config['TESTING']:
+        mailer.send(msg)
     print('sent {0} {1}'.format(user.id, user.email))
     return jsonify({'Email': user.email, 'Expires': expires})
 

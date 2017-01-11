@@ -319,4 +319,5 @@ def checkCode(c, userid):
     elif code.userid != userid:
         return {'Error': 'User ID does not match'}
     else:
+        db.session.delete(code)
         return code
