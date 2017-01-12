@@ -90,7 +90,6 @@ def getUser(id):
         description: Unauthorized
     """
     user = db.session.query(Users).get(id)
-    print(user.id)
     return user.JSON()
 
 
