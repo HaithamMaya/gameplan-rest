@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e620406-552f-40ce-a5d3-869b2db611aa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" afterPath="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" afterPath="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/gameplan-rest$Tests.coverage" NAME="Tests Coverage Results" MODIFIED="1484504600835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/gameplan-rest$Tests.coverage" NAME="Tests Coverage Results" MODIFIED="1484504898791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/gameplan-rest$gameplan_rest.coverage" NAME="gameplan-rest Coverage Results" MODIFIED="1484192284022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask_app/flask_app" />
     <SUITE FILE_PATH="coverage/gameplan-rest$Unnamed.coverage" NAME="Tests Coverage Results" MODIFIED="1483974600933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -46,7 +46,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="flask_tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flask_tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-300">
@@ -115,8 +115,18 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flask_app/flask_app/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            <state relative-caret-position="75">
+              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -217,12 +227,12 @@
         <option value="$PROJECT_DIR$/flask_app/flask_app/test_config/test_config_db.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/models.py" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/routes.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_app/oauth2.py" />
         <option value="$PROJECT_DIR$/flask_app/flask_tests/flask_tests.py" />
+        <option value="$PROJECT_DIR$/flask_app/flask_app/__init__.py" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -925,13 +935,17 @@
       <option name="project" value="LOCAL" />
       <updated>1484191641339</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="refactored tests and made some small changes">
+      <created>1484504720239</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1484504720239</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Tests - 2017.01.15 at 13h 14m 38s.xml">
-      <configuration name="Tests" configurationId="tests" />
-    </history-entry>
     <history-entry file="Tests - 2017.01.15 at 13h 15m 25s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
@@ -957,6 +971,9 @@
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
     <history-entry file="Tests - 2017.01.15 at 13h 23m 22s.xml">
+      <configuration name="Tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Tests - 2017.01.15 at 13h 28m 20s.xml">
       <configuration name="Tests" configurationId="tests" />
     </history-entry>
   </component>
@@ -1000,7 +1017,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="generating and checking user password" />
     <MESSAGE value="checking password fix and updating documentation" />
     <MESSAGE value="revoke token isn't working. request.client is None in oauthlib/oauth2.py file so client_id cannot be compared to tok.client_id" />
     <MESSAGE value="small fixes in swagger docs and verification code authentication." />
@@ -1025,7 +1041,8 @@
     <MESSAGE value="added slack integration" />
     <MESSAGE value="OAuth should be ready to go! Check README and flask_tests for examples" />
     <MESSAGE value="added more oauth tests for all calls to /oauth/token" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more oauth tests for all calls to /oauth/token" />
+    <MESSAGE value="refactored tests and made some small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored tests and made some small changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1234,14 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1348,14 +1357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="27" lean-forward="false" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/7e72e3f0/765a7582-2c3c-4608-ac66-032e375880ca/PostgresDB1.public.users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1455,21 +1456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-961">
-          <caret line="257" column="42" lean-forward="false" selection-start-line="257" selection-start-column="42" selection-end-line="257" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-            <element signature="e#878#2357#1" expanded="false" />
-            <element signature="e#2506#4617#1" expanded="false" />
-            <element signature="e#5681#7040#1" expanded="false" />
-            <element signature="e#8296#8955#1" expanded="false" />
-            <element signature="e#9220#10040#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_app/flask_app/oauth2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -1492,6 +1478,37 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-961">
+          <caret line="257" column="42" lean-forward="false" selection-start-line="257" selection-start-column="42" selection-end-line="257" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+            <element signature="e#878#2357#1" expanded="false" />
+            <element signature="e#2506#4617#1" expanded="false" />
+            <element signature="e#5681#7040#1" expanded="false" />
+            <element signature="e#8296#8955#1" expanded="false" />
+            <element signature="e#9220#10040#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_app/flask_app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>

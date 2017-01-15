@@ -7,6 +7,7 @@ import os
 app = Flask(__name__)
 
 script = os.getcwd().split('/')[-1]
+print('running: ',script)
 
 if script == 'flask_tests':
     app.config['DEBUG'] = True
