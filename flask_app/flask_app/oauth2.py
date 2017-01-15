@@ -294,9 +294,8 @@ def save_token(token, request, *args, **kwargs):
 def get_user(username, password, *args, **kwargs):
     user = db.session.query(Users).filter_by(username=username).first()
     if check_password_hash('{0}${1}${2}'.format(ENCRYPTION_METHOD, user.salt, user.hash), password + user.role):
-        print('correct')
         return user
-    print('incorrect')
+    print('incorrect password')
     return False
 
 

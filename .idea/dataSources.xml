@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://nva-gameplandb.c3kzj7yoj95k.us-east-1.rds.amazonaws.com:5432/PostgresDB1</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="cashc" uuid="3176930f-5f22-48a8-b937-ee0d06506ec9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/cashc</jdbc-url>
+    </data-source>
   </component>
 </project>
