@@ -16,7 +16,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <resolve-scope>cashc:public,</resolve-scope>
+      <resolve-scope>cashc:public</resolve-scope>
     </data-source>
   </component>
 </project>
