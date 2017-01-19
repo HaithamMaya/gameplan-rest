@@ -225,10 +225,10 @@ class Token(Base):
         db.session.commit()
         return self
 
-    @staticmethod
+    @property
     def scopes(self):
-        if self.scopes:
-            return self.scopes.split()
+        if self._scopes:
+            return self._scopes.split()
         return []
 
 

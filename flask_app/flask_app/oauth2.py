@@ -142,7 +142,7 @@ def access_token():
             description: client id
             in: query
             type: string
-            required: true
+            required: false
           - name: redirect_uri
             description: redirect uri
             in: query
