@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="aws-ec2">
+  <component name="PublishConfigData" serverName="aws-ec2" uploadOnCheckin="af127149-af49-4d41-bad7-1267d2972437">
     <serverData>
       <paths name="aws-ec2">
         <serverdata>
@@ -10,5 +10,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="aws-ec2" />
   </component>
 </project>
