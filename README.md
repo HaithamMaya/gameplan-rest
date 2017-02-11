@@ -29,9 +29,11 @@ on remote server
 sudo apt-get install libapache2-mod-wsgi-py3
 sudo apt install python3-pip
 ```   
-
-<script src="https://gist.github.com/cashc/0da9891cbeca02c116c833d3c12718b6.js"></script>
-<script src="https://gist.github.com/cashc/e34115cda2a590275162403e1ba69b2b.js"></script>
+###Gists
+ - New User (API)
+  - https://gist.github.com/cashc/0da9891cbeca02c116c833d3c12718b6   
+ - New User (email)
+  - https://gist.github.com/cashc/e34115cda2a590275162403e1ba69b2b
 
 ###Other links
 https://github.com/mailgun/transactional-email-templates
