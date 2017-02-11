@@ -1,4 +1,4 @@
-from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
+from flask_app.__init__ import *
 from flask_app.models import Client, Grant, Token, Users, Codes
 from flask import request, jsonify
 from werkzeug.security import gen_salt, check_password_hash
@@ -9,7 +9,6 @@ from hashlib import sha512
 import pprint
 
 SIMPLE_CHARS = string.ascii_letters + string.digits
-
 
 @app.route('/oauth/authorize', methods=['POST'])
 @oauth.authorize_handler

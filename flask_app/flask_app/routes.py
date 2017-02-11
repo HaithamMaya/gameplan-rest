@@ -1,4 +1,4 @@
-from flask_app.__init__ import app, db, oauth, HOME_URL, ENCRYPTION_METHOD
+from flask_app.__init__ import *
 from flask_app.models import Users, Validators, Codes, Schools
 from flask_app.oauth2 import randomString
 from flask import redirect, request, render_template, jsonify
@@ -9,9 +9,6 @@ import urllib.parse as parse
 import pprint
 
 mailer = Mail(app)
-VALIDATOR_DURATION_DAYS = 30
-CODE_DURATION_MINUTES = 15
-
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
@@ -394,7 +391,7 @@ def sendCode(v, email):
     msg.html = render_template('verify.html', first=user.first, code=code.six_digits, url=url)
     if not app.config['TESTING']:
         mailer.send(msg)
-    print('sent {0} {1}'.format(user.id, user.email))
+    print('code to {0} {1}'.format(user.id, user.email))
     return jsonify({'Email': user.email, 'Expires': expires})
 
 

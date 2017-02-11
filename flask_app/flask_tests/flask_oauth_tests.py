@@ -1,13 +1,11 @@
 from flask_tests.__init__ import *
-from oauthlib.common import to_unicode
-import urllib.parse as parse
 
 class FlaskOauthUnitTest(FlaskUnitTest):
 
     @classmethod
     def setUpClass(cls):
         super(FlaskOauthUnitTest, cls).setUpClass()
-        print('starting OAuth Tests')
+        print('Running OAuth Tests')
 
     def test_unauthorized(self):
         rv = self.app.get('/user/{0}'.format(user_id))
@@ -56,12 +54,12 @@ class FlaskOauthUnitTest(FlaskUnitTest):
 
     def test_authorized(self):
         access = 'access_token=' + access_token
-        rv = self.app.get('/user/1?{0}'.format(access))
+        rv = self.app.get('/user/{0}?{1}'.format(user_id, access))
         self.assertNotIn('Unauthorized', str(rv.data))
 
     def test_update_user_password(self):
         access = 'access_token=' + access_token
-        rv = self.app.post('/update/1?{0}'.format(access),
+        rv = self.app.post('/update/{0}?{1}'.format(user_id, access),
                            data=dict(password='password!',username='JohnnyD'))
         self.assertIn('password', str(rv.data))
         self.assertIn('username', str(rv.data))
@@ -70,7 +68,7 @@ class FlaskOauthUnitTest(FlaskUnitTest):
         usernm = 'JohnnyD'
         passwd = 'password!'
         access = 'access_token=' + access_token
-        rv_update = self.app.post('/update/1?{0}'.format(access),
+        rv_update = self.app.post('/update/{0}?{1}'.format(user_id, access),
                                   data=dict(password=passwd, username=usernm))
         self.assertIn('updated', str(rv_update.data))
         client = 'client_id=' + client_id
@@ -97,6 +95,7 @@ class FlaskOauthUnitTest(FlaskUnitTest):
         self.resetToken()
         self.assertNotIn('error', str(rv.data))
         self.assertNotIn('Token.scopes', str(rv.data))
+        print(str(rv.data))
 
         self.assertIn('access_token', str(rv.data))
         self.assertIn('scope', str(rv.data))

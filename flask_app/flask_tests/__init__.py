@@ -6,7 +6,7 @@ from flask_app.__init__ import *
 from flask_app.models import *
 
 client_id = 'id'
-user_id = 1
+user_id = 0
 six_digits = '123456'
 access_token = 'acc'
 refresh_token = 'ref'
@@ -26,13 +26,13 @@ class FlaskUnitTest(unittest.TestCase):
 
     @classmethod
     def resetDB(cls):
-        CLIENT = Client(client_id, 'secret', 'Test Client', 1, False,
+        CLIENT = Client(client_id, 'secret', 'Test Client', user_id, False,
                         HOME_URL + 'authorized http://127.0.0.1:5000/authorized', 'A S T P N')
-        USER = Users(user_id, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 1, 1, None, None)
-        ADDRESS = Addresses(1, '123 Main St', '#101', 'Detroit', 'MI', '48226')
-        SCHOOL = Schools(1, 'Detroit High', 1, 1)
-        CODE = Codes(six_digits, datetime.utcnow() + timedelta(days=30), 1)
-        TOKEN = Token(0, 'id', 1, 'Bearer', access_token, refresh_token, datetime.utcnow() + timedelta(days=30),
+        USER = Users(user_id, "John", "Doe", "jdoe", "jdoe@domain.com", "S", 0, 0, None, None)
+        ADDRESS = Addresses(0, '123 Main St', '#101', 'Detroit', 'MI', '48226')
+        SCHOOL = Schools(0, 'Detroit High', 0, 0)
+        CODE = Codes(six_digits, datetime.utcnow() + timedelta(days=30), 0)
+        TOKEN = Token(0, 'id', user_id, 'Bearer', access_token, refresh_token, datetime.utcnow() + timedelta(days=30),
                       'A S T P N')
         db.session.add(CLIENT)
         db.session.add(USER)
@@ -44,13 +44,13 @@ class FlaskUnitTest(unittest.TestCase):
         print('Added to DB')
 
     def resetToken(self):
-        tok = db.session.query(Token).filter_by(user=1).first()
+        tok = db.session.query(Token).filter_by(user=user_id).first()
         tok.access_token = access_token
         tok.refresh_token = refresh_token
         db.session.commit()
 
     def addCode(self):
-        CODE = Codes(six_digits, datetime.utcnow() + timedelta(days=30), 1)
+        CODE = Codes(six_digits, datetime.utcnow() + timedelta(days=30), user_id)
         db.session.add(CODE)
         db.session.commit()
 

@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 script = os.getcwd().split('/')[-1]
 
-if script == 'flask_app':
+if script == 'flask_app' or script == 'www':
     app.config['DEBUG'] = True
     app.config['TESTING'] = False
     app.config.from_pyfile('config/config_db.py')
@@ -16,6 +16,7 @@ if script == 'flask_app':
     app.config.from_pyfile('config/config_mail.py')
     app.config.from_pyfile('config/config_swagger.py')
 else: # gameplan-rest or flask_tests
+    print("testing...")
     app.config['DEBUG'] = True
     app.config['TESTING'] = True
     app.config.from_pyfile('test_config/test_config_db.py')
@@ -29,6 +30,8 @@ Swagger(app)
 
 HOME_URL = "http://api.mygameplan.io/"
 ENCRYPTION_METHOD = 'pbkdf2:sha1'
+VALIDATOR_DURATION_DAYS = 30
+CODE_DURATION_MINUTES = 15
 
 from flask_app.routes import *
 from flask_app.oauth2 import *

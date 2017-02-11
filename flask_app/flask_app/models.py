@@ -1,5 +1,5 @@
 from flask_app.__init__ import db
-from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean
+from sqlalchemy import Column, DateTime, Float, Integer, String, text, Text, ForeignKey, Boolean, or_
 from sqlalchemy.ext.declarative import declarative_base
 from flask_restplus import reqparse
 from flask import jsonify
@@ -282,7 +282,7 @@ class Users(Base):
         userParser.add_argument('email', type=str, help='Email address required')
         userParser.add_argument('role', type=str, help='Role required (A=admin, S=student, T=teacher, P=parent')
         userParser.add_argument('schoolid', type=int, help='School ID required')
-        userParser.add_argument('addressid', type=int, help='Address ID required')
+        userParser.add_argument('addressid', type=int, help='Address ID')
         return userParser
 
     @staticmethod
