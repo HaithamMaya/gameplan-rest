@@ -46,12 +46,12 @@ class FlaskUserUnitTest(FlaskUnitTest):
         v = db.session.query(Validators).filter((Validators.userid > 0)).first()
         if(type(v) != Validators):
             rv_add = self.app.post('/add?{0}'.format(access),
-                               data=dict(first='Jay', last='Dough', email='doughy@domain.com', role='S',schoolid=0))
+                           data=dict(first='Billy', last='Roberts', email='brobby@domain.com', role='S',schoolid=0))
             v = db.session.query(Validators).filter((Validators.userid > 0)).first()
 
         u = db.session.query(Users).get(v.userid)
         rv = self.app.get('/validate/{0}?email={1}'.format(v.validator,u.email.split('@')[0]))
-        self.assertIn('"user": {0}'.format(u.id), str(rv.data))
+        self.assertIn('"email": "{0}"'.format('br*******@d******.***'), str(rv.data))
 
 
     def test_post_code_validate_user(self):
@@ -59,7 +59,7 @@ class FlaskUserUnitTest(FlaskUnitTest):
         v = db.session.query(Validators).filter((Validators.userid > 0)).first()
         if(type(v) != Validators):
             rv_add = self.app.post('/add?{0}'.format(access),
-                               data=dict(first='Jay', last='Dough', email='doughy@domain.com', role='S',schoolid=0))
+                           data=dict(first='Billy', last='Roberts', email='brobby@domain.com', role='S',schoolid=0))
             v = db.session.query(Validators).filter((Validators.userid > 0)).first()
 
         u = db.session.query(Users).get(v.userid)
@@ -68,4 +68,4 @@ class FlaskUserUnitTest(FlaskUnitTest):
         rv_split = re.split('"Expires"', str(rv.data))
         expires = datetime.strptime(rv_split[-1][3:-7], '%a, %d %b %Y %H:%M:%S %Z')
         self.assertIn('"Email": "{0}"'.format(u.email), str(rv.data))
-        self.assertTrue(expires.strftime('%a, %d %b %Y %H:%M %Z') == (datetime.utcnow()+timedelta(minutes=15)).strftime('%a, %d %b %Y %H:%M %Z'))
+        self.assertAlmostEqual(expires.strftime('%a, %d %b %Y %H:%M %Z'), (datetime.utcnow()+timedelta(minutes=15)).strftime('%a, %d %b %Y %H:%M %Z'))

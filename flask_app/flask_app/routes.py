@@ -321,7 +321,10 @@ def getValidatorUser(v):
     """
     validator = validatorRequestCheck(v, request.args.get('email'))
     if type(validator) is Validators:
-        return jsonify({'user': (validator.userid)})
+        user = db.session.query(Users).get(validator.userid)
+        first, second = user.email.split('@')
+        starredEmail = first[0:2]+'*'*7+'@'+second[0:1]+'*'*6+'.'+'*'*3
+        return jsonify({'email': starredEmail})
     return validator
 
 @app.route('/validate/<string:v>', methods=['POST'])
