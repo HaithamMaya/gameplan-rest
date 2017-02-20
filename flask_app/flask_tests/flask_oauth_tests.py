@@ -1,4 +1,5 @@
 from flask_tests.__init__ import *
+import json
 
 class FlaskOauthUnitTest(FlaskUnitTest):
 
@@ -21,7 +22,7 @@ class FlaskOauthUnitTest(FlaskUnitTest):
         scope = 'scope=A'
         response = 'response_type=code'
         rv = self.app.post('/oauth/authorize?{0}&{1}&{2}&{3}'.format(client,redirect_uri, scope, response),
-                           data=dict(code=six_digits, userid=user_id))
+                           data=json.dumps(dict(code=six_digits, userid=user_id)),content_type='application/json')
         self.addCode()
         self.assertNotIn('error', str(rv.location))
         self.assertIn('code', str(rv.location))
@@ -35,14 +36,15 @@ class FlaskOauthUnitTest(FlaskUnitTest):
         redirect_uri = 'redirect_uri=http://127.0.0.1:5000/authorized'
         scope = 'scope=A'
         response = 'response_type=code'
-        grant_type = 'grant_type=authorization_code'
         rv_auth = self.app.post('/oauth/authorize?{0}&{1}&{2}&{3}'.format(client, redirect_uri, scope, response),
                                 data=dict(code=six_digits, userid=user_id))
         self.addCode()
         self.assertNotIn('Error', str(rv_auth.data))
-        auth_code = 'code=' + str(rv_auth.location).split('=')[-1]
+        auth_code = str(rv_auth.location).split('=')[-1]
 
-        rv = self.app.post('/oauth/token?{0}&{1}&{2}&{3}&{4}'.format(grant_type,client,auth_code,scope,redirect_uri))
+        rv = self.app.post('/oauth/token',
+                           data=json.dumps(dict(grant_type='authorization_code', client_id=client_id, code=auth_code,
+                            scope='A', redirect_uri='http://127.0.0.1:5000/authorized')), content_type='application/json')
         # rv_token = re.split(':|,',str(rv.data))
         # pprint.pprint(rv_token)
         self.resetToken()
@@ -74,9 +76,11 @@ class FlaskOauthUnitTest(FlaskUnitTest):
         client = 'client_id=' + client_id
         redirect_uri = 'redirect_uri=http://127.0.0.1:5000/authorized'
         scope = 'scope=A'
-        grant_type = 'grant_type=password'
-        rv = self.app.post('/oauth/token?{0}&{1}&{2}&{3}&username={4}&password={5}'.format(grant_type,client,scope,
-                                                                                           redirect_uri,usernm,passwd))
+        grant_type = 'password'
+
+        d = json.dumps(dict(grant_type=grant_type, client_id=client_id, username=usernm, password=passwd))
+
+        rv = self.app.post('/oauth/token', data=d, content_type='application/json')
         self.resetToken()
         self.assertIn('access_token', str(rv.data))
         self.assertIn('scope', str(rv.data))
