@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
+
 from flask_oauthlib.provider import OAuth2Provider
 from flasgger import Swagger
 import os
